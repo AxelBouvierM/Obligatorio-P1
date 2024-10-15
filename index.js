@@ -13,7 +13,7 @@ function login() {
         window.location.href = 'user.html'
     }
 } */
-
+/* prueba de merge */
 
 let button = document.querySelector("#open-modal")
 let modal = document.querySelector("#modal")
