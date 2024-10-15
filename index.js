@@ -3,7 +3,7 @@
 button.addEventListener('click', login)
 
 
-function login() {
+function login() { 
     let user = document.querySelector('#inputUserName').value
     let pwd = document.querySelector('#inputPassword').value
 
