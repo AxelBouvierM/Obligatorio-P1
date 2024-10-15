@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 119px;
+}
+
+.contenedor {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2,
+h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+a,
+p,
+li,
+label {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    background-color: #023047;
+    padding: 30px 8px 15px 60px;
+    object-fit: contain;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    border-bottom: 4px solid #fb8500;
+}
+
+header a img {
+    width: 200px;
+    height: 70px;
+    padding-left: 50px;
+}
+
+header nav a {
+    padding-right: 60px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+header a:hover {
+    color: #fb8500;
+}
+
+header a:focus {
+    color: #fb8500;
+}
+
+/* Login: */
+
+#login {
+    width: 100%;
+    height: 430px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#login #login-data {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+#login #login-data h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#login #login-data form {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: start;
+}
+
+#button-form {
+    padding-bottom: 20px;
+}
+
+
+
+input {
+    width: 300px;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: left;
+}
+
+form label {
+    padding-top: 15px;
+    padding-bottom: 8px;
+}
+
+#login #login-img {
+    width: 500px;
+    height: 100%;
+    background-color: #fb8500;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+}
+
+#login #login-img img {
+    width: 60%;
+    height: 10%;
+    /* padding-bottom: 20px; */
+    object-fit: contain;
+}
+
+input[type="button"] {
+    text-align: center;
+    font-weight: 700;
+}
+
+#buttonCrearCuenta {
+    width: 25%;
+}
