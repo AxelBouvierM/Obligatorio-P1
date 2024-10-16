@@ -1,4 +1,4 @@
-/* let button = document.querySelector('#buttonLogin')
+let button = document.querySelector('#buttonLogin')
 
 button.addEventListener('click', login)
 
@@ -12,12 +12,11 @@ function login() {
     } else {
         window.location.href = 'user.html'
     }
-} */
+}
 /* prueba de merge */
 
-let button = document.querySelector("#open-modal")
+/* let button = document.querySelector("#open-modal")
 let modal = document.querySelector("#modal")
 button.addEventListener('click', function () {
     modal.showModal()
-})
-
+}) */
