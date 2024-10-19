@@ -49,11 +49,13 @@ h1{
     background-color: #023047;
     position: relative;
     padding: 30px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
     
 }
 
 .reservas:hover{
-    width: 98%;
+    transform: scale(1.15);
     transition: 1s all;
 }
 
@@ -85,6 +87,16 @@ h2{
 
 .estadoReserva-rechazada{
     background-color: #aa1212;
+    width: 20%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-right: 50px;
+    font-size: 16px;
+}
+
+.estadoReserva-pendiente{
+    background-color: #d19b36;
     width: 20%;
     border: none;
     color: white;
