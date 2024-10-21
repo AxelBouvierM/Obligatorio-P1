@@ -19,6 +19,16 @@ modal.addEventListener('click', function(event) {
     if (event.target === modal) {
         modal.close();
     }
-});
+})
 
+function login() { 
+    let user = document.querySelector('#inputUserName').value
+    let pwd = document.querySelector('#inputPassword').value
+
+    if (user == 'admin') {
+        window.location.href = 'admin.html'
+    } else {
+        window.location.href = 'user.html'
+    }
+}
 
