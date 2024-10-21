@@ -73,97 +73,90 @@ header a:focus {
 
 /* Login: */
 
-#login {
-    width: 100%;
-    height: 430px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    align-items: center;
+.contenedor{
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: center;
-    flex-wrap: wrap;
-}
-
-#login #login-data {
-    width: 500px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     align-items: center;
-    border-radius: 20px 0 0 20px;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
 }
 
-#login #login-data h1 {
-    padding-top: 20px;
-    padding-bottom: 20px;
+.contenedor h1{
+    width: 100%;
     text-align: center;
 }
 
-#login #login-data form {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-#form-content {
+.login-registro-container{
+    width: 500px;
+    height: 500px;
+    z-index: 0;
+    background-color: #c5dce7;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: start;
+    align-items: left;
+    gap: 15px;
+    padding: 50px;
 }
 
-#button-form {
-    padding-bottom: 20px;
-}
-
-
-
-input {
-    width: 300px;
-    box-sizing: border-box;
-    padding: 5px;
-    text-align: left;
-}
-
-form label {
-    padding-top: 15px;
-    padding-bottom: 8px;
-}
-
-#login #login-img {
-    width: 500px;
-    height: 100%;
-    background-color: #fb8500;
-    border-radius: 0 20px 20px 0;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+.form-content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.5s ease, opacity 0.5s ease;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: left;
 }
 
-#login #login-img img {
-    width: 60%;
-    height: 10%;
-    /* padding-bottom: 20px; */
-    object-fit: contain;
+.form-content input{
+    width: 70%;
+    height: 25px;
+    margin: 10px 0px;
+    padding-left: 10px;
 }
 
-input[type="button"] {
+.button-form{
+    margin: 10px;
     text-align: center;
-    font-weight: 700;
 }
 
-#buttonCrearCuenta {
-    width: 25%;
+.buttonLogin{
+    width: 40%;
+    height: 40px;
+    cursor: pointer;
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 4px;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buttonLogin:hover {background-color:#bd3810}
+
+#login-img{
+    z-index: 44444;
+    width: 600px;
+    height: 600px;
+    background-color: #fb8500;
+    background-image: url("../img/logoChico.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 360px;
+    top: 119px;
+}
+
+#moverBannerIzq:active #login-img::before{
+    left: 360px;
+    top: 119px;
+}
+#moverBannerIzq:active #login-img::after{
+    transform: translateX(600px);
+    transition: 1s all;
 }

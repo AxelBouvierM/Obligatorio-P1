@@ -70,3 +70,20 @@ header a:hover {
 header a:focus {
     color: #219ebc;
 }
+
+footer{
+    background-color: #023047;
+    padding: 30px 8px 15px 60px;
+    object-fit: contain;
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    border-top: 4px solid #219ebc;
+    height: 50px;
+    margin-top: 100px;
+}
+
+footer p{
+    color: white;
+    margin-right: 100px;
+}

@@ -1,0 +1,131 @@
+body{
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+    padding: 50px 0px;
+    font-size: 40px;
+    color: black;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#reservas-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-background{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.reservas{
+    width: 80%;
+    text-align: center;
+    padding: 20px 0px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 3px solid #fb8500;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: #023047;
+    position: relative;
+    padding: 30px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.reservas:hover{
+    transform: scale(1.15);
+    transition: 1s all;
+}
+
+.informacion-adicional{
+    display: none;
+    text-align: left;
+    padding-right: 50px;
+}
+
+.reservas:hover .informacion-adicional{
+    display: flex;
+    
+}
+
+h2{
+    width: 15%;
+    font-size: 35px;
+}
+
+.estadoReserva-aprobada{
+    background-color: #04AA6D;
+    width: 20%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-right: 50px;
+    font-size: 16px;
+}
+
+.estadoReserva-rechazada{
+    background-color: #aa1212;
+    width: 20%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-right: 50px;
+    font-size: 16px;
+}
+
+.estadoReserva-pendiente{
+    background-color: #d19b36;
+    width: 20%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-right: 50px;
+    font-size: 16px;
+}
+
+.cancelarReserva{
+    margin-right: 25px;
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancelarReserva:hover {
+    opacity: 1
+
+}
+
+.cancelarReserva:active {
+    background-color: #a52a05;
+}
