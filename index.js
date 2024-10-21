@@ -1,22 +1,22 @@
-let button = document.querySelector('#buttonLogin')
+let buttons = document.querySelectorAll(".open-modal"); // Seleccionar todos los botones
+let modal = document.querySelector("#modal");
+let form = document.querySelector("#form");
 
-button.addEventListener('click', login)
+// Abrir el modal al hacer clic en cualquiera de los botones
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        modal.showModal();
+    });
+});
 
+// Cerrar el modal al enviar el formulario
+form.addEventListener('submit', function() {
+    modal.close();
+});
 
-function login() {
-    let user = document.querySelector('#inputUserName').value
-    let pwd = document.querySelector('#inputPassword').value
-
-    if (user == 'admin') {
-        window.location.href = 'admin.html'
-    } else {
-        window.location.href = 'user.html'
+// Cerrar el modal al hacer clic fuera de él
+modal.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        modal.close();
     }
-}
-/* prueba de merge */
-
-/* let button = document.querySelector("#open-modal")
-let modal = document.querySelector("#modal")
-button.addEventListener('click', function () {
-    modal.showModal()
-}) */
+});
