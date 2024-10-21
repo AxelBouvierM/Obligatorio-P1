@@ -24,8 +24,8 @@
     </header>
     
 
-    <section id="login" class="contenedor">
-        <div id="login-img">
+    <section id="loginContainer" class="contenedor">
+        <div id="login-img" class="toggle-panel move-right move-left">
             <!-- <input type="button" id="buttonCrearCuenta" value="Crear cuenta"> -->
         </div>    
       <div id="login-data" class="login-registro-container">
@@ -42,12 +42,12 @@
           </div>
         </form>
 
-        <a href="">¿No tienes una cuenta? Registrate aquí</a>
+        <input type="button" value="¿No tienes una cuenta? Registrate aquí" class="toggle-left" id="register-slider"/>
 
         <div class="button-form">
           <input type="button" class="buttonLogin" value="Iniciar Sesión" />
         </div>
-      </div>
+      </div> 
       <div id="registro-data" class="login-registro-container">
         <h1>Registrate</h1>
 
@@ -68,7 +68,7 @@
           </div>
         </form>
 
-        <input type="button" id="moverBannerIzq" value="¿Tienes cuenta? Inicia sesion aquí" />
+        <input type="button" value="¿Tienes cuenta? Inicia sesion aquí" class="toggle-right" id="login-slider"/>
 
         <div class="button-form">
           <input type="button" class="buttonLogin" value="Registrarse" />
@@ -77,5 +77,6 @@
     </section>
 
     <script src="../index.js"></script>
+    <script src="../login.js"></script>
   </body>
 </html>

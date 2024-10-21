@@ -148,15 +148,22 @@ header a:focus {
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
-    left: 360px;
+    left: 960px;
     top: 119px;
 }
 
-#moverBannerIzq:active #login-img::before{
-    left: 360px;
-    top: 119px;
-}
-#moverBannerIzq:active #login-img::after{
-    transform: translateX(600px);
-    transition: 1s all;
-}
+
+#login-img {
+    position: absolute;
+    right: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+
+  .move-left {
+    transform: translateX(-100%);
+  }
+  
+  .move-right {
+    transform: translateX(0);
+  }
