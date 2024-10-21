@@ -128,12 +128,21 @@ td {
 
 tbody tr:nth-child(odd) {
     background-color: #fa8600;
+    cursor: pointer;
 }
 
 tbody tr:nth-child(even) {
     background-color: #fcb769;
+    cursor: pointer;
 }
 
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    border-bottom: 2px solid #023047;
+}
 
 /* Boton nuevo destino */
 .fixed-button {
@@ -216,6 +225,7 @@ dialog form {
     height: auto;
 }
 
+#third-column,
 #second-column,
 #first-column {
     display: flex;

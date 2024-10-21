@@ -37,10 +37,11 @@
     <section id="gestDestinos">
         <div class="contenedor">
             <h1><u>Gestion de destinos</u></h1>
-            <table>
+            <table id="tablaDestinos">
                 <thead>
                     <!--Definicion de Headers...-->
                     <tr>
+                        <th>ID</th>
                         <th>Destino</th>
                         <th>Precio</th>
                         <th>Oferta</th>
@@ -48,8 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--Definicion de Contenido...-->
-                    <tr class="open-modal">
+                    <!-- <tr id="1" class="open-modal">
                         <td>Caribe</td>
                         <td>USD 1050</td>
                         <td>SI</td>
@@ -108,7 +108,7 @@
                         <td>USD 7850</td>
                         <td>NO</td>
                         <td>Inactivo</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -134,41 +134,50 @@
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                 </select>
-
-                <label for="inputFoto">URL imagen</label>
-                <input type="text" id="inputFoto" value="">
             </div>
 
             <div id="second-column">
-            <label for="inputDuracion">Duración</label>
-            <input type="text" id="inputDuracion" value="">
+                <label for="inputDuracion">Duración</label>
+                <input type="text" id="inputDuracion" value="">
 
-            <label for="inputAlojamiento">Alojamiento</label>
-            <input type="text" id="inputAlojamiento" value="">
+                <label for="inputAlojamiento">Alojamiento</label>
+                <input type="text" id="inputAlojamiento" value="">
 
-            <label for="inputModalidad">Modalidad</label>
-            <input type="text" id="inputModalidad" value="">
+                <label for="inputModalidad">Modalidad</label>
+                <input type="text" id="inputModalidad" value="">
 
-            <label for="inputVuelos">¿Incluye vuelos?</label>
-            <select id="inputVuelos">
-                <option value="Si">Si</option>
-                <option value="No">No</option>
-            </select>
+                <label for="inputVuelos">¿Incluye vuelos?</label>
+                <select id="inputVuelos">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div id="third-column">
+                <label for="inputFoto">URL imagen</label>
+                <input type="text" id="inputFoto" value="">
 
-            <label for="inputTraslado">¿Incluye traslado al aeropuerto?</label>
-            <select id="inputTraslado">
-                <option value="Si">Si</option>
-                <option value="No">No</option>
-            </select>
-        </div>
+                <label for="inputTraslado">¿Incluye traslado al aeropuerto?</label>
+                <select id="inputTraslado">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="inputModalidad">Modalidad</label>
+                <input type="text" id="inputModalidad" value="">
+
+                <label for="inputCupos">Cupos</label>
+                <input type="text" id="inputCupos" value="">
+
+                <input type="hidden" id="inputID" value="">
+            </div>
         </form>
         <div id="sendButton">
-            <input type="submit" id="send" value="">
+            <input type="button" id="send" value="GUARDAR CAMBIOS">
         </div>
     </dialog>
 
     <div>
-        <input type="button" value="Nuevo destino" id="agregarDestino" class="open-modal fixed-button">
+        <input type="button" value="Nuevo destino" id="agregarDestino" class="open-modal-add fixed-button">
     </div>
 
     <script src="../gestionDest.js"></script>
