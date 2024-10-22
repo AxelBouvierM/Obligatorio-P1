@@ -77,10 +77,10 @@ header a:focus {
 
  #gestDestinos {
     height: auto;
-    background-image: url("img/aeropuerto.jpg");
+    /* background-image: url("img/aeropuerto.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
     margin: 10px;
 }
 

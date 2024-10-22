@@ -1,65 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/adminStyles.css" />
-    <link rel="stylesheet" href="../styles/informeGananciasStyles.css" />
-    <title>#ADMIN# Informe de ganancias</title>
-  </head>
-  <body>
-    <header>
-      <a href="#"><img src="../img/logoChico.png" alt="Logo de VIAJAUY" /></a>
-      <nav>
-        <a href="#">Gestionar reservas</a>
-        <a href="#">Gestionar destinos</a>
-        <a href="#">Informe de ganancias</a>
-      </nav>
-    </header>
-    <section id="section-informeGanancias">
-        <div id="table-container">
-            <table>
-                <thead>
-                  <td>Destino</td>
-                  <td>Cantidad de reservas</td>
-                  <td>Total generado</td>
-                </thead>
-                <tr>
-                  <td>China</td>
-                  <td>9</td>
-                  <td>11000</td>
-                </tr>
-                <tr>
-                    <td>Dubai</td>
-                    <td>3</td>
-                    <td>6000</td>
-                </tr>
-                <tr>
-                    <td>Miami</td>
-                    <td>5</td>
-                    <td>7000</td>
-                </tr>
-                <tr>
-                    <td>Caribe</td>
-                    <td>8</td>
-                    <td>11000</td>
-                </tr>
-                <tr>
-                    <td>Polo Norte</td>
-                    <td>1</td>
-                    <td>5000</td>
-                </tr>
-              </table>
-        </div>
-        <div id="gananciasTotales-container">
-            <p>El total generado hasta la fecha es:</p>
-            <input type="number" value="40000" id="gananciasTotales">
-        </div>
-    </section>
 
-    <footer>
-      <img src="../img/logoChico.png" alt="Logo de VIAJAUY" />
-      <p>Axel Bouvier - Mauricio Montero</p>
-    </footer>
-  </body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="../styles/adminStyles.css" />
+	<link rel="stylesheet" href="../styles/informeGananciasStyles.css" />
+	<title>Informe de ganancias - Admin</title>
+</head>
+
+<body>
+	<header>
+		<a href="admin.html"><img src="../img/logoChico.png" alt="Logo de VIAJAUY" /></a>
+		<nav>
+			<a href="gestionarReservas.html">Gestionar reservas</a>
+			<a href="gestionarDestinos.html">Gestionar destinos</a>
+			<a href="#">Informe de ganancias</a>
+		</nav>
+	</header>
+
+	<section id="section-informeGanancias">
+		<div id="table-container" class="contenedor">
+			<h1><u>Gestion de reservas</u></h1>
+			<table>
+				<thead>
+					<td>Destino</td>
+					<td>Cantidad de reservas</td>
+					<td>Total generado</td>
+				</thead>
+				<tr>
+					<td>CARIBE</td>
+					<td>60</td>
+					<td>USD 63.000</td>
+				</tr>
+				<tr>
+					<td>EUROPA</td>
+					<td>120</td>
+					<td>USD 540.000</td>
+				</tr>
+				<tr>
+					<td>ASIA Y ÁFRICA</td>
+					<td>50</td>
+					<td>USD 392.500</td>
+				</tr>
+				<tr>
+					<td>AMSTERDAM</td>
+					<td>90</td>
+					<td>USD 706.500</td>
+				</tr>
+				<tr>
+					<td>MARRUECOS</td>
+					<td>80</td>
+					<td>USD 628.000</td>
+				</tr>
+				<tr>
+					<td>MENDOZA</td>
+					<td>40</td>
+					<td>USD 314.000</td>
+				</tr>
+				<tr id="totalGenerado">
+					<td>Total generado</td>
+					<td></td>
+					<td>USD 2.644.000</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+
+	<section id="graf" class="contenedor">
+		<h2>Ventas de Viajes por Destino</h2>
+		<div class="chart-wrapper">
+			<div class="y-axis">
+				<div>100%</div>
+				<div>75%</div>
+				<div>50%</div>
+				<div>25%</div>
+				<div>0%</div>
+			</div>
+			<div class="chart-container">
+				<div class="bar" style="height: 12%;">CARIBE - $11,000</div>
+				<div class="bar" style="height: 24%;">EUROPA - $6,000</div>
+				<div class="bar" style="height: 10%;">ASIA Y ÁFRICA - $7,000</div>
+				<div class="bar" style="height: 18%;">AMSTERDAM - $11,000</div>
+				<div class="bar" style="height: 16%;">MARRUECOS - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<!-- <div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
+				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div> -->
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<img src="../img/logoChico.png" alt="Logo de VIAJAUY" />
+		<p>Axel Bouvier - Mauricio Montero</p>
+	</footer>
+</body>
+
 </html>
