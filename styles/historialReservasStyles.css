@@ -1,6 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 119px;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+th,
+h2,
+h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+td,
+a,
+p,
+li,
+label {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body{
     font-family: "Roboto", sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 section{
@@ -32,11 +65,12 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50%;
 }
 
 .reservas{
-    width: 80%;
+    width: 90%;
+    height: 100px;
     text-align: center;
     padding: 20px 0px;
     justify-content: space-between;
@@ -46,32 +80,28 @@ h1{
     border: 3px solid #fb8500;
     border-radius: 10px;
     margin: 5px;
-    background-color: #023047;
+    background-color: #ffffff;
     position: relative;
     padding: 30px;
     transform: scale(1);
     transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
 
-.reservas:hover{
-    transform: scale(1.15);
-    transition: 1s all;
+.container-informacion-adicional{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .informacion-adicional{
-    display: none;
-    text-align: left;
-    padding-right: 50px;
-}
-
-.reservas:hover .informacion-adicional{
-    display: flex;
-    
+    text-align: center;
 }
 
 h2{
-    width: 15%;
+    width: 25%;
     font-size: 35px;
 }
 
@@ -81,8 +111,10 @@ h2{
     border: none;
     color: white;
     padding: 15px 32px;
-    margin-right: 50px;
+    margin: 0 auto;
     font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .estadoReserva-rechazada{
@@ -91,41 +123,47 @@ h2{
     border: none;
     color: white;
     padding: 15px 32px;
-    margin-right: 50px;
+    margin: 0 auto;
     font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .estadoReserva-pendiente{
-    background-color: #d19b36;
+    background-color: #ffa600;
     width: 20%;
     border: none;
     color: white;
     padding: 15px 32px;
-    margin-right: 50px;
+    margin: 0 auto;
     font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cancelarReserva{
-    margin-right: 25px;
-    background-color: #f4511e;
+    width: 20%;
+    text-align: left;
+    border-radius: 30px;
     border: none;
+    padding: 15px 30px;
+    margin-left: 15px;
+    background: linear-gradient(135deg, #fb8500, #ff7c00);
     color: white;
-    padding: 16px 22px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-    opacity: 0.6;
-    transition: 0.3s;
-    display: inline-block;
-    text-decoration: none;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 4px 3px rgba(0, 0, 0, 0.3);
+    outline: none;
 }
 
 .cancelarReserva:hover {
-    opacity: 1
-
+    background: linear-gradient(135deg, #ff7c00, #ff6100);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cancelarReserva:active {
-    background-color: #a52a05;
+    transform: translateY(1px);
 }
+
