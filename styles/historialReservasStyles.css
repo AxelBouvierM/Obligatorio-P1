@@ -7,13 +7,20 @@ body {
     margin-top: 119px;
 }
 
+.contenedor {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
 h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
+    font-size: 30px;
 }
 
-th,
 h2,
 h3 {
     font-family: "Roboto", sans-serif;
@@ -21,26 +28,59 @@ h3 {
     font-style: normal;
 }
 
-td,
 a,
 p,
 li,
 label {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: normal;
 }
 
-body{
-    font-family: "Roboto", sans-serif;
-    color: rgb(0, 0, 0);
-}
-
-section{
+header {
+    background-color: #023047;
+    padding: 30px 8px 15px 60px;
+    object-fit: contain;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    border-bottom: 4px solid #fb8500;
+}
+
+header a img {
+    width: 200px;
+    height: 70px;
+    padding-left: 50px;
+}
+
+header nav a {
+    padding-right: 60px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+header a:hover {
+    color: #fb8500;
+}
+
+header a:focus {
+    color: #fb8500;
+}
+
+
+section {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 h1{
@@ -54,34 +94,39 @@ h1{
 }
 
 #reservas-container{
+    width: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
 }
 
-.container-background{
+.container-background-1,
+.container-background-2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis:46%;
+    margin: 20px;
 }
 
 .reservas{
-    width: 90%;
     height: 100px;
     text-align: center;
     padding: 20px 0px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     border: 3px solid #fb8500;
     border-radius: 10px;
     margin: 5px;
     background-color: #ffffff;
-    position: relative;
+    /* position: relative; */
     padding: 30px;
     transform: scale(1);
     transition: transform 0.3s ease-in-out;
@@ -89,7 +134,7 @@ h1{
     
 }
 
-.container-informacion-adicional{
+/* .container-informacion-adicional{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -99,7 +144,7 @@ h1{
 .informacion-adicional{
     text-align: center;
 }
-
+ */
 h2{
     width: 25%;
     font-size: 35px;
