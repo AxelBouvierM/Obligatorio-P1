@@ -40,6 +40,9 @@
             <label for="inputPassword">Contraseña</label>
             <input type="password" id="inputPassword" placeholder="password" />
           </div>
+          <div id="errorContainerLogin">
+
+          </div>
         </form>
 
         <input type="button" value="¿No tienes una cuenta? Registrate aquí" class="toggle-left" id="register-slider"/>
@@ -54,24 +57,24 @@
         <form>
           <div class="form-content">
             <label for="inputName">Nombre</label>
-            <input type="text" id="inputName" placeholder="Nombre" />
+            <input type="text" id="inputName" placeholder="Nombre" class="redBorder" />
             <label for="inputLastName">Apellido</label>
-            <input type="text" id="inputLastName" placeholder="Apellido" />
+            <input type="text" id="inputLastName" placeholder="Apellido" class="redBorder" />
             <label for="inputUserEmail">Nombre de usuario o email</label>
-            <input type="email" id="inputUserEmail" placeholder="username" />
+            <input type="email" id="inputUserEmail" placeholder="username" class="redBorder" />
             <label for="inputPasswordRegister">Contraseña</label>
-            <input type="password" id="inputPasswordRegister" placeholder="password" />
+            <input type="password" id="inputPasswordRegister" placeholder="password" class="redBorder" />
             <label for="inputCreditCard">Numero de tarjeta de credito</label>
-            <input type="text" id="inputCreditCard" placeholder="WWWW-XXXX-YYYY-ZZZZ" />
+            <input type="text" id="inputCreditCard" placeholder="WWWW-XXXX-YYYY-ZZZZ" class="redBorder" />
             <label for="inputCVC">Numero de tarjeta de credito</label>
-            <input type="text" id="inputCVC" placeholder="CVC" />
+            <input type="text" id="inputCVC" placeholder="CVC" class="redBorder" />
           </div>
         </form>
 
         <input type="button" value="¿Tienes cuenta? Inicia sesion aquí" class="toggle-right" id="login-slider"/>
 
         <div class="button-form">
-          <input type="button" class="buttonLogin" value="Registrarse" />
+          <input type="button" class="buttonLogin" value="Registrarse" id="sendRegitration"/>
         </div>
       </div>
     </section>
