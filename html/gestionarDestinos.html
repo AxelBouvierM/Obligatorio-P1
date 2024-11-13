@@ -123,19 +123,19 @@
         <form id="form" method="dialog">
             <div id="first-column">
                 <label for="inputDestino">Destino</label>
-                <input type="text" id="inputDestino" value="">
+                <input type="text" id="inputDestino" value="" required>
 
                 <label for="inputPrecio">Precio</label>
-                <input type="number" id="inputPrecio" value="">
+                <input type="number" id="inputPrecio" value="" required>
 
                 <label for="inputOferta">Oferta</label>
-                <select id="inputOferta">
+                <select id="inputOferta" required>
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                 </select>
 
                 <label for="inputEstado">Estado</label>
-                <select id="inputEstado">
+                <select id="inputEstado" required>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                 </select>
@@ -143,37 +143,38 @@
 
             <div id="second-column">
                 <label for="inputDuracion">Duración</label>
-                <input type="text" id="inputDuracion" value="">
+                <input type="text" id="inputDuracion" value="" required>
 
                 <label for="inputAlojamiento">Alojamiento</label>
-                <input type="text" id="inputAlojamiento" value="">
+                <input type="text" id="inputAlojamiento" value="" required>
 
                 <label for="inputModalidad">Modalidad</label>
-                <input type="text" id="inputModalidad" value="">
+                <input type="text" id="inputModalidad" value="" required>
 
                 <label for="inputVuelos">¿Incluye vuelos?</label>
-                <select id="inputVuelos">
+                <select id="inputVuelos" required>
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                 </select>
             </div>
             <div id="third-column">
                 <label for="inputFoto">URL imagen</label>
-                <input type="text" id="inputFoto" value="">
+                <input type="text" id="inputFoto" value="" required>
 
                 <label for="inputTraslado">¿Incluye traslado al aeropuerto?</label>
-                <select id="inputTraslado">
+                <select id="inputTraslado" required>
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                 </select>
 
-                <label for="inputModalidad">Modalidad</label>
-                <input type="text" id="inputModalidad" value="">
+                <!-- <label for="inputModalidad">Modalidad</label>
+                <input type="text" id="inputModalidad" value=""> -->
 
                 <label for="inputCupos">Cupos</label>
-                <input type="text" id="inputCupos" value="">
+                <input type="text" id="inputCupos" value="" required>
 
-                <input type="hidden" id="inputID" value="">
+                <label for="inputID">ID</label>
+                <input type="number" id="inputID" value="" disabled>
             </div>
         </form>
         <div id="sendButton">
@@ -185,6 +186,7 @@
         <input type="button" value="Nuevo destino" id="agregarDestino" class="open-modal-add fixed-button">
     </div>
 
+    <script src="../entities/events.js"></script>
     <script src="../gestionDest.js"></script>
 </body>
 
