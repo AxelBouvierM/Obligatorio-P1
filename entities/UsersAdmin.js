@@ -1,4 +1,4 @@
-const usersAdmin = [];
+/* const usersAdmin = [];
 
 class UserAdmin {
   constructor(
@@ -90,4 +90,4 @@ usersAdmin.push(
     )
   );
 
-  console.log(usersAdmin)
+  console.log(usersAdmin) */

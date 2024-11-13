@@ -1,5 +1,11 @@
 class Sistema {
-    constructor(parameters) {
-        
+    constructor() {
+        this.users = [];
+        this.preLoadData();
     }
+
+    preLoadData(){
+
+    }
+
 }
