@@ -1,61 +1,45 @@
 let buttonLogin = document.querySelector("#sendLogin");
 let buttonRegister = document.querySelector("#sendRegitration");
 buttonLogin.addEventListener("click", login);
-buttonRegister.addEventListener("click", register);
+buttonRegister.addEventListener("click", verifyEmptiness);
+
+let usersDatabase = JSON.parse(localStorage.getItem('usersDatabase'))
 
 function login() {
-  let loginUser = document.querySelector("#inputUserName").value;
-  let loginPassword = document.querySelector("#inputPassword").value;
+  let inputUsername = document.querySelector("#inputUserName").value;
+  let userPassword = document.querySelector("#inputPassword").value;
   let errorContainerLogin = document.querySelector("#errorContainerLogin");
 
-  Object.keys(users).forEach((key) => {
-    if (users[key].admin) {
-      if (
-        users[key].userName === loginUser &&
-        users[key].userPassword === loginPassword
-      ) {
-        window.location.href = "admin.html";
-      } else {
-        errorContainerLogin.innerHTML = `<p>Usuario o contraseña incorrecta</p>`;
-      }
+  currentUser = sis.findingUser(inputUsername, userPassword)
+  adminUser = sis.isAdmin(inputUsername)
+
+  if (currentUser == false) {
+    errorContainerLogin.innerHTML = `<p>Credenciales incorrectas</p>`     
+  } else {
+    if (adminUser == true) {
+      window.location.href = "admin.html";
     } else {
-      if (
-        users[key].userName === loginUser &&
-        users[key].userPassword === loginPassword
-      ) {
-        window.location.href = "index.html";
-      } else {
-        errorContainerLogin.innerHTML = `<p>Usuario o contraseña incorrecta</p>`;
-      }
+      window.location.href = "index.html";
     }
-  });
+  }
 }
 
 function verifyEmptiness() {
-  let inputName = document.querySelector("#inputName").value;
-  let inputLastName = document.querySelector("#inputLastName").value;
-  let inputUsername = document.querySelector("#inputUsername").value;
-  let inputPasswordRegister = document.querySelector(
-    "#inputPasswordRegister"
-  ).value;
-  let inputCreditCard = document.querySelector("#inputCreditCard").value;
-  let inputCVC = document.querySelector("#inputCVC").value;
+  let inputSignUpName = qsValue("inputSignUpName")
+  let inputSignUpLastName = qsValue("inputSignUpLastName")
+  let inputSignUpUsername = qsValue("inputSignUpUsername")
+  let inputSignUpPassword = qsValue("inputSignUpPassword")
+  let inputSignUpCreditCard = qsValue("inputSignUpCreditCard")
+  let inputSignUpCVC = qsValue("inputSignUpCVC")
 
-  if (
-    !inputName ||
-    !inputLastName ||
-    !inputUsername ||
-    !inputPasswordRegister ||
-    !inputCreditCard ||
-    !inputCVC
-  ) {
+  if (!inputSignUpName || !inputSignUpLastName || !inputSignUpUsername || !inputSignUpPassword || !inputSignUpCreditCard || !inputSignUpCVC) {
     let inputs = [
-      "#inputName",
-      "#inputLastName",
-      "#inputUsername",
-      "#inputPasswordRegister",
-      "#inputCreditCard",
-      "#inputCVC",
+      "#inputSignUpName",
+      "#inputSignUpLastName",
+      "#inputSignUpUsername",
+      "#inputSignUpPassword",
+      "#inputSignUpCreditCard",
+      "#inputSignUpCVC",
     ];
 
     inputs.forEach((selection) => {
@@ -67,26 +51,6 @@ function verifyEmptiness() {
       }
     });
   }
-}
-
-function register() {
-  let inputName = document.querySelector("#inputName").value;
-  let inputLastName = document.querySelector("#inputLastName").value;
-  let inputUsername = document.querySelector("#inputUsername").value;
-  let inputPasswordRegister = document.querySelector("#inputPasswordRegister").value;
-  let inputCreditCard = document.querySelector("#inputCreditCard").value;
-  let inputCVC = document.querySelector("#inputCVC").value;
-  let errorContainerRegister = document.querySelector("#errorContainerRegister");
-   verifyEmptiness(inputName, )
-  for (let i = 0; i < users.length; i++) {
-    if (inputUsername === users) {
-      errorContainerRegister.innerHTML = `Nombre de usuario ya registrado`
-    } else {
-
-    }
-    
-  }
-
 }
 
 document.addEventListener("DOMContentLoaded", function () {
