@@ -36,7 +36,12 @@ class Sistema {
         new User(false, "Douglas", "Cain", "douglascain45", "douglas.cain@example.com", "Douglas#94", "4012888888881881", 458, 15000, 4425)
     );
   }
-
+  /**
+   * Funcion para buscar un usuario en el objeto de usuarios.
+   * @param {string} username 
+   * @param {string} password 
+   * @returns booleano - true si el usuario fue encontrado, false si no. Ademas crea un array con los datos del usuario loggeado y lo guarda en el local storage. 
+   */
   findingUser(username, password) {
     let wasUserFound = false;
     this.users.forEach(User => {
@@ -64,6 +69,22 @@ class Sistema {
     const user = this.users.find(user => user.userName === username);
     return user ? user.admin === true : false;
   }
+
+  registerUser(firstName, lastName, userName, userPassword, userCreditCard, userCVC) {
+    this.users.push(new User(false, firstName, lastName, userName, userPassword, userCreditCard, userCVC, 15000, 0));
+    localStorage.setItem('usersDatabase',JSON.stringify(this.users))
+  }
+
+  findUsername (username){
+    let isNew = true;
+    this.users.forEach(User => {
+      if (User.userName === username) {
+        isNew = false;
+      }
+    });
+    return isNew;
+  }
+  
 }
 
 document.addEventListener("DOMContentLoaded", function () {
