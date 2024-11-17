@@ -16,7 +16,7 @@
 
 <body>
     <header>
-        <a href="#"><img src="../img/logoChico.png" alt="Logo de VIAJAUY"></a>
+        <a href="index.html"><img src="../img/logoChico.png" alt="Logo de VIAJAUY"></a>
         <nav>
             <a href="index.html">Paquetes</a>
             <a href="historialReservas.html">Reservas</a>
@@ -24,9 +24,10 @@
         </nav>
     </header>
     <section class="contenedor">
+        <h2 id="emptyReserv"></h2>
        <!--  <h1>Historial de reservas</h1> -->
             <div class="container-background-1">
-                <div class="reservas">
+                <!-- <div class="reservas">
                     <h2>Miami</h2>
                     <div class="informacion-adicional container-informacion-adicional">
                         <p class="cantidadPersonas informacion-adicional">Cantidad de personas</p>
@@ -55,7 +56,7 @@
                         <p class="montoTotal informacion-adicional">Monto total reserva</p>
                         <p class="metodoPago informacion-adicional">Medio de pago seleccionado</p>
                     </div>
-                    <input type="button" value="Cancelado" class="estadoReserva-rechazada" disabled>
+                    <input type="button" value="Rechazada" class="estadoReserva-rechazada" disabled>
                     <input type="button" value="Cancelar reserva" class="cancelarReserva" style="visibility: hidden;">
                 </div>
             </div>
@@ -91,11 +92,14 @@
                     </div>
                     <input type="button" value="Aprobada" class="estadoReserva-aprobada" disabled>
                     <input type="button" value="Cancelar reserva" class="cancelarReserva" style="visibility: hidden;">
-                </div>
+                </div> -->
             </div>
     </section>
 
-    <script src="../index.js"></script>
+    <script src="../entities/events.js"></script>
+    <script src="../entities/sistema.js"></script>
+    <!-- <script src="../gestionDest.js"></script> -->
+    <script src="../historialReservas.js"></script>
 </body>
 
 </html>

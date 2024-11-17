@@ -1,4 +1,3 @@
-let buttons = document.querySelectorAll(".open-modal"); // Seleccionar todos los botones
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
 
@@ -17,7 +16,7 @@ function actualizarDestinos() {
             let vuelos = destinos[key]["flights"] ? 'Incluye vuelos ida y vuelta' : 'No incluye vuelos ida y vuelta'
             let traslado = destinos[key]["transfer"] ? 'Incluye traslados al aeropuerto' : 'No incluye traslados al aeropuerto'
 
-                div.innerHTML += `<article>
+            div.innerHTML += `<article>
                     <div class="paquetes-img">
                         ${oferta}
                         <img src=${destinos[key]["url"]} alt="Imagen del Caribe">
@@ -40,17 +39,48 @@ function actualizarDestinos() {
         }
     })
 }
-
+let idDestino = 0
+let buttons = document.querySelectorAll(".open-modal");
 // Abrir el modal al hacer clic en cualquiera de los botones
 buttons.forEach(button => {
     button.addEventListener('click', function () {
+        idDestino = button.getAttribute('id-destino');
+
+        /* Limpiar valores del formulario */
+        let cant = document.querySelector('#inputCantPasajeros')
+        let error = document.querySelector('#emptyForm')
+        cant.value = ''
+        error.innerHTML = ''
+
         modal.showModal();
     });
 });
 
 // Cerrar el modal al enviar el formulario
-form.addEventListener('submit', function () {
-    modal.close();
+form.addEventListener('submit', function (event) {
+    console.log(idDestino)
+
+    event.preventDefault();
+
+    let cant = document.querySelector('#inputCantPasajeros').value
+    let mPayment = document.querySelector('#inputMedioPago').value
+    let error = document.querySelector('#emptyForm')
+
+    if (cant && mPayment) {
+        if (cant > 0) {
+            error.innerHTML = ''
+            /* pendiente agregar el id del usuario dinamico... */
+            window.Sistema.createReservation(cant, mPayment, idDestino, 3, 'Pendiente')
+            window.Sistema.pushItemToLocalStorage('reservations', window.Sistema.reservations)
+
+            modal.close();
+        } else {
+            error.innerHTML = 'La cantidad de pasajeros debe ser mayor a 0'
+        }
+    } else {
+        error.innerHTML = '¡Todos los campos deben estar completos!'
+    }
+
 });
 
 // Cerrar el modal al hacer clic fuera de él
@@ -79,3 +109,5 @@ window.addEventListener('storage', (event) => {
         actualizarDestinos()
     }
 });
+
+

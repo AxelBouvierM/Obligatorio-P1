@@ -31,18 +31,18 @@ class User {
   }
 }
 
-  users.push(
-    new User(
-      true,
-      "John",
-      "Doe",
-      "johndoe",
-      "john.doe@example.com",
-      "password123",
-      "4111111111111111",
-      123,
-      15000,
-      1500
+users.push(
+  new User(
+    true,
+    "John",
+    "Doe",
+    "johndoe",
+    "john.doe@example.com",
+    "password123",
+    "4111111111111111",
+    123,
+    15000,
+    1500
   ),
   new User(
     true,
@@ -155,5 +155,7 @@ class User {
 );
 
 document.addEventListener("DOMContentLoaded", function () {
-  localStorage.setItem('usersDatabase',JSON.stringify(users))
+  localStorage.setItem('usersDatabase', JSON.stringify(users))
 });
+
+
