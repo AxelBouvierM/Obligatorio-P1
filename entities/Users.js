@@ -1,7 +1,5 @@
 let IDauto = 0;
 
-const users = [];
-
 class User {
   constructor(
     admin,

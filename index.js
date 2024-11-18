@@ -1,6 +1,7 @@
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
-
+const btnLogOut = document.querySelector("#log-out")
+btnLogOut.addEventListener("click", logOut)
 // Carga los destinos al iniciar la web
 actualizarDestinos();
 
@@ -89,18 +90,6 @@ modal.addEventListener('click', function (event) {
         modal.close();
     }
 })
-
-function login() {
-    let user = document.querySelector('#inputUserName').value
-    let pwd = document.querySelector('#inputPassword').value
-
-    if (user == 'admin') {
-        window.location.href = 'admin.html'
-    } else {
-        window.location.href = 'user.html'
-    }
-}
-
 
 // Evento para escuchar los cambios en el storage
 window.addEventListener('storage', (event) => {
