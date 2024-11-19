@@ -27,6 +27,16 @@ class Sistema {
         let reservation = {cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state}
         this.reservations.push(reservation)
     }
+    
+    isLogged() {
+        const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
+        document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
+          if (!userLogged.isAdmin) {
+            alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
+            window.location.href = "index.html"
+          }
+        });
+    }
 }
 
 window.Sistema = new Sistema()

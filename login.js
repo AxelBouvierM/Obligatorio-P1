@@ -4,7 +4,6 @@ buttonLogin.addEventListener("click", login);
 buttonLogin.addEventListener("click", verifyEmptinessLogin);
 buttonRegister.addEventListener("click", register);
 buttonRegister.addEventListener("click", verifyEmptinessRegister);
-
 let usersDatabase = JSON.parse(localStorage.getItem("usersDatabase"));
 
 function verifyEmptinessLogin() {
@@ -96,6 +95,10 @@ function register(){
   
   if (isFirstCharUppercase(inputSignUpName) && isFirstCharUppercase(inputSignUpLastName) && sis.findUsername(inputSignUpUsername) && passwordValidation(inputSignUpPassword) && isNumbers(inputSignUpCreditCard) && inputSignUpCreditCard.length === 16 && isNumbers(inputSignUpCVC) && inputSignUpCVC.length === 3) {
     sis.registerUser(inputSignUpName, inputSignUpLastName, inputSignUpUsername, inputSignUpPassword, inputSignUpCreditCard, inputSignUpCVC)
+    errorContainerRegister.innerHTML = `<p>¡Usuario registrado correctamente! - Usted va a ser redirigido a nuestra pagina de compras. Aguarde un momento</p>`
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
   }  else {
     errorContainerRegister.innerHTML = `<p>Datos ingresados incorrectos</p>`
   }

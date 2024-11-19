@@ -99,4 +99,8 @@ window.addEventListener('storage', (event) => {
     }
 });
 
+function logOut(){
+    localStorage.setItem('userLoggedIn', JSON.stringify(""));
+}
 
+sis.navigateToAdmin()

@@ -1,4 +1,5 @@
 refreshTotalReserv()
+window.Sistema.isLogged()
 
 function refreshTotalReserv() {
     let pendientes = document.querySelector('#pendientes')
