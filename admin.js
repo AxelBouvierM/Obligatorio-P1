@@ -8,15 +8,18 @@ function refreshTotalReserv() {
     let a = 0
     let r = 0
     let p = 0
-    reservations.forEach(element => {
-        if (element.state == 'Pendiente') {
-            p += 1
-        } else if (element.state == 'Aprobada') {
-            a += 1
-        } else {
-            r += 1
-        }
-    });
+
+    if (reservations && reservations.lenght != 0) {
+        reservations.forEach(element => {
+            if (element.state == 'Pendiente') {
+                p += 1
+            } else if (element.state == 'Aprobada') {
+                a += 1
+            } else {
+                r += 1
+            }
+        });
+    }
     pendientes.innerHTML = `<b>${p}</b>`
     aprobadas.innerHTML = `<b>${a}</b>`
     rechazadas.innerHTML = `<b>${r}</b>`

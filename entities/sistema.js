@@ -1,3 +1,4 @@
+window.reservID = 0
 class Sistema {
     constructor() {
         this.users = [];
@@ -12,7 +13,7 @@ class Sistema {
             8: new Dest("ROMA", 7850, true, false, "../img/roma.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 54, 'DEST_ID_8'),
             9: new Dest("RANDOM", 7850, false, false, "../img/viajeAmigos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 341, 'DEST_ID_9'),
         };
-        this.reservations = [];
+        this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
     }
 
     pushItemToLocalStorage(key, value) {
@@ -24,9 +25,11 @@ class Sistema {
     }
 
     createReservation(cant, mPayment, destID, userID, state) {
-        let reservation = {cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state}
+        let reservation = {cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${window.reservID++}`}
         this.reservations.push(reservation)
     }
+
+    
 }
 
 window.Sistema = new Sistema()

@@ -39,23 +39,26 @@ function actualizarDestinos() {
                 </article>`
         }
     })
+    openModal()
 }
 let idDestino = 0
-let buttons = document.querySelectorAll(".open-modal");
-// Abrir el modal al hacer clic en cualquiera de los botones
-buttons.forEach(button => {
-    button.addEventListener('click', function () {
-        idDestino = button.getAttribute('id-destino');
+function openModal() {
+    let buttons = document.querySelectorAll(".open-modal");
+    // Abrir el modal al hacer clic en cualquiera de los botones
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            idDestino = button.getAttribute('id-destino');
 
-        /* Limpiar valores del formulario */
-        let cant = document.querySelector('#inputCantPasajeros')
-        let error = document.querySelector('#emptyForm')
-        cant.value = ''
-        error.innerHTML = ''
+            /* Limpiar valores del formulario */
+            let cant = document.querySelector('#inputCantPasajeros')
+            let error = document.querySelector('#emptyForm')
+            cant.value = ''
+            error.innerHTML = ''
 
-        modal.showModal();
+            modal.showModal();
+        });
     });
-});
+}
 
 // Cerrar el modal al enviar el formulario
 form.addEventListener('submit', function (event) {
@@ -100,3 +103,6 @@ window.addEventListener('storage', (event) => {
 });
 
 
+function logOut() {
+    localStorage.setItem('userLoggedIn', JSON.stringify(""));
+}
