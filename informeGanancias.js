@@ -11,18 +11,24 @@ function refreshReservations() {
 
     if (reservations && reservations.lenght != 0) {
         let tmp = infoGanancias(reservations, dest)
-        
+        let total = 0
         if (Object.keys(tmp) != 0) {
             error.innerHTML = ''
 
             Object.keys(tmp).forEach(key => {
-
+                total += +tmp[key].total
                 div.innerHTML += `<tr>
                     <td>${dest[key.split('_')[2]].dest}</td>
                     <td>${tmp[key].cant}</td>
                     <td>USD ${tmp[key].total}</td>
                     </tr>`
             });
+
+            div.innerHTML += `<tr id="totalGenerado">
+						<td>Total generado</td>
+						<td></td>
+						<td>USD ${total}</td>
+					</tr>`
 
         } else {
             console.log('error')
