@@ -6,6 +6,10 @@ buttonRegister.addEventListener("click", register);
 buttonRegister.addEventListener("click", verifyEmptinessRegister);
 let usersDatabase = JSON.parse(localStorage.getItem("usersDatabase"));
 
+addEventListener("DOMContentLoaded", function () {
+  localStorage.setItem('userLoggedIn', JSON.stringify(""));
+});
+
 function verifyEmptinessLogin() {
   let inputUserName = document.querySelector("#inputUserName").value;
   let inputPassword = document.querySelector("#inputPassword").value;
@@ -32,8 +36,8 @@ function login() {
   let userPassword = document.querySelector("#inputPassword").value;
   let errorContainerLogin = document.querySelector("#errorContainerLogin");
 
-  currentUser = sis.findingUser(inputUsername, userPassword);
-  adminUser = sis.isAdmin(inputUsername);
+  currentUser = window.Sistema.findingUser(inputUsername, userPassword);
+  adminUser = window.Sistema.isAdmin(inputUsername);
 
   if (inputUsername != "" || userPassword != "") {
     if (currentUser == false) {
@@ -62,6 +66,7 @@ function verifyEmptinessRegister() {
   let inputSignUpPassword = qsValue("inputSignUpPassword");
   let inputSignUpCreditCard = qsValue("inputSignUpCreditCard");
   let inputSignUpCVC = qsValue("inputSignUpCVC");
+  let errorContainerRegister = qs("errorContainerRegister")
 
   if (!inputSignUpName || !inputSignUpLastName || !inputSignUpUsername || !inputSignUpPassword || !inputSignUpCreditCard || !inputSignUpCVC) {
     let inputs = [
@@ -81,6 +86,8 @@ function verifyEmptinessRegister() {
         input.style.border = "";
       }
     });
+    errorContainerRegister.innerHTML = `<p>Por favor complete los campos</p>`
+
   }
 }
 
@@ -93,8 +100,8 @@ function register(){
   let inputSignUpCVC = qsValue("inputSignUpCVC");
   let errorContainerRegister = qs("errorContainerRegister")
   
-  if (isFirstCharUppercase(inputSignUpName) && isFirstCharUppercase(inputSignUpLastName) && sis.findUsername(inputSignUpUsername) && passwordValidation(inputSignUpPassword) && isNumbers(inputSignUpCreditCard) && inputSignUpCreditCard.length === 16 && isNumbers(inputSignUpCVC) && inputSignUpCVC.length === 3) {
-    sis.registerUser(inputSignUpName, inputSignUpLastName, inputSignUpUsername, inputSignUpPassword, inputSignUpCreditCard, inputSignUpCVC)
+  if (isFirstCharUppercase(inputSignUpName) && isFirstCharUppercase(inputSignUpLastName) && window.Sistema.findUsername(inputSignUpUsername) && passwordValidation(inputSignUpPassword) && isNumbers(inputSignUpCreditCard) && inputSignUpCreditCard.length === 16 && isNumbers(inputSignUpCVC) && inputSignUpCVC.length === 3) {
+    window.Sistema.registerUser(inputSignUpName, inputSignUpLastName, inputSignUpUsername, inputSignUpPassword, inputSignUpCreditCard, inputSignUpCVC)
     errorContainerRegister.innerHTML = `<p>¡Usuario registrado correctamente! - Usted va a ser redirigido a nuestra pagina de compras. Aguarde un momento</p>`
     setTimeout(() => {
       window.location.href = "index.html";

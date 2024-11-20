@@ -1,4 +1,5 @@
 refreshReservations()
+window.Sistema.isLogged()
 
 function refreshReservations() {
     let div = document.querySelector('.container-background-1')

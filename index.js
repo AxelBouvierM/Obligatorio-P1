@@ -1,3 +1,5 @@
+window.Sistema.isLogged()
+
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
 const btnLogOut = document.querySelector("#log-out")
@@ -105,5 +107,12 @@ window.addEventListener('storage', (event) => {
 function logOut(){
     localStorage.setItem('userLoggedIn', JSON.stringify(""));
 }
-
-sis.navigateToAdmin()
+window.addEventListener('DOMContentLoaded', onShowBudget)
+// Funcion para mostrar el presupuesto del usuario loggeado
+function onShowBudget(){ 
+    let budgetDisplayer = document.querySelector("#budgetDisplayer");
+    let currentBudget = JSON.parse(localStorage.getItem('userLoggedIn')).budget;
+    console.log(currentBudget);
+    console.log(budgetDisplayer.value);
+    budgetDisplayer.value = currentBudget;
+}
