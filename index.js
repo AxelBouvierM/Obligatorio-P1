@@ -107,12 +107,4 @@ window.addEventListener('storage', (event) => {
 function logOut(){
     localStorage.setItem('userLoggedIn', JSON.stringify(""));
 }
-window.addEventListener('DOMContentLoaded', onShowBudget)
-// Funcion para mostrar el presupuesto del usuario loggeado
-function onShowBudget(){ 
-    let budgetDisplayer = document.querySelector("#budgetDisplayer");
-    let currentBudget = JSON.parse(localStorage.getItem('userLoggedIn')).budget;
-    console.log(currentBudget);
-    console.log(budgetDisplayer.value);
-    budgetDisplayer.value = currentBudget;
-}
+

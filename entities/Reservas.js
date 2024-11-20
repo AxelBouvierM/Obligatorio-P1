@@ -9,3 +9,11 @@ class Reservation {
         this.status = status;
     }
 }
+
+/*         this.reservations = [/* 
+{"cant":"123123123",
+"mPayment":"efectivo",
+"destID":"DEST_ID_1",
+"userId":3,
+"state":"Pendiente",
+"reservID":0} */;

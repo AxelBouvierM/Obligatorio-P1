@@ -57,14 +57,15 @@ class Sistema {
      * @returns booleano - true si el usuario fue encontrado, false si no. Ademas crea un array con los datos del usuario loggeado y lo guarda en el local storage. 
      */
     findingUser(username, password) {
-      let wasUserFound = false;
-      this.users.forEach(User => {
-        if (User.userName === username && User.userPassword === password) {
-          this.userLoggedDetails(username);
-          wasUserFound = true;
-        }
-      });
-      return wasUserFound;
+      let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase')
+      let userFound = usersDatabase.find(user => user.userName === username && user.userPassword === password);
+      
+      if (userFound) {
+        this.userLoggedDetails(username);
+        return true;
+      } else {
+        return false;
+      }
     }
     
     /**
@@ -85,8 +86,9 @@ class Sistema {
     }
   
     findUsername (username){
+      let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase')
       let isNew = true;
-      this.users.forEach(User => {
+      usersDatabase.forEach(User => {
         if (User.userName === username) {
           isNew = false;
         }
@@ -94,17 +96,21 @@ class Sistema {
       return isNew;
     }
   
-    userLoggedDetails (username){
-      let user = this.users.find(user => user.userName === username);
+    userLoggedDetails (username) {
+      let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase');
+      let user = usersDatabase.find(user => user.userName === username);
       let userLogged = {
         logged: true,
         isAdmin: user.admin,
         firstName: user.firstName,
+        lastName: user.lastName,
         username: user.userName,
         budget: user.userBudget,
         pwd: user.userPassword,
         userID: user.id,
-      }
+        miles: user.milesAmount,
+      };
+    
       localStorage.setItem('userLoggedIn', JSON.stringify(userLogged));
     }
 
@@ -124,7 +130,7 @@ class Sistema {
     isAdminLogged() {
         const currentUserLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
         document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
-          if (!userLogged.logged) {
+          if (!currentUserLogged.logged) {
             alert("Por favor, inicie sesión para acceder a esta página.");
             window.location.href = "login.html"
             return
@@ -149,7 +155,7 @@ class Sistema {
 
 document.addEventListener("DOMContentLoaded", function () {
   if (!localStorage.getItem("usersDatabase")) {
-    localStorage.setItem("usersDatabase", JSON.stringify(sis.users));
+    localStorage.setItem("usersDatabase", JSON.stringify(window.Sistema.users));
   }
 });
 

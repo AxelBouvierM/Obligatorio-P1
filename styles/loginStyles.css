@@ -5,6 +5,8 @@
 
 body {
     margin-top: 119px;
+/*     background-image: url("../img/D65G.gif");
+    background-size: 10%; */
 }
 
 .contenedor {
@@ -207,4 +209,31 @@ label{
 
 #login-slider:active, #register-slider:active{
     color: #f4511e;
+}
+
+@keyframes mi-animacion {
+    from {
+      transform: translateY(-200%);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+.contenedor{
+    animation: mi-animacion 1s ease-out;
+    padding: 20px;
+}
+
+#login-data{
+    position: relative;
+    top: -20px;
+    border-radius: 0px 0px 0px 50px;
+}
+
+#registro-data{
+    position: relative;
+    top: -20px;
+    border-radius: 0px 0px 50px 0px;
+
 }

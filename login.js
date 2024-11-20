@@ -39,6 +39,9 @@ function login() {
   currentUser = window.Sistema.findingUser(inputUsername, userPassword);
   adminUser = window.Sistema.isAdmin(inputUsername);
 
+  console.log(window.Sistema.findingUser(inputUsername, userPassword))
+  console.log(window.Sistema.isAdmin(inputUsername))
+
   if (inputUsername != "" || userPassword != "") {
     if (currentUser == false) {
       errorContainerLogin.innerHTML = `<p>Credenciales incorrectas</p>`;
@@ -100,7 +103,15 @@ function register(){
   let inputSignUpCVC = qsValue("inputSignUpCVC");
   let errorContainerRegister = qs("errorContainerRegister")
   
-  if (isFirstCharUppercase(inputSignUpName) && isFirstCharUppercase(inputSignUpLastName) && window.Sistema.findUsername(inputSignUpUsername) && passwordValidation(inputSignUpPassword) && isNumbers(inputSignUpCreditCard) && inputSignUpCreditCard.length === 16 && isNumbers(inputSignUpCVC) && inputSignUpCVC.length === 3) {
+  if ( window.Sistema.findUsername(inputSignUpUsername)  === false ) {
+    errorContainerRegister.innerHTML = `<p>Nombre de usuario ya registrado</p>`
+    setTimeout(() => {
+        errorContainerLogin.innerHTML = "";
+    }, 3000);
+    return
+  }
+  
+  if (isFirstCharUppercase(inputSignUpName) && isFirstCharUppercase(inputSignUpLastName) && passwordValidation(inputSignUpPassword) && isNumbers(inputSignUpCreditCard) && inputSignUpCreditCard.length === 16 && isNumbers(inputSignUpCVC) && inputSignUpCVC.length === 3) {
     window.Sistema.registerUser(inputSignUpName, inputSignUpLastName, inputSignUpUsername, inputSignUpPassword, inputSignUpCreditCard, inputSignUpCVC)
     errorContainerRegister.innerHTML = `<p>¡Usuario registrado correctamente! - Usted va a ser redirigido a nuestra pagina de compras. Aguarde un momento</p>`
     setTimeout(() => {
@@ -109,6 +120,7 @@ function register(){
   }  else {
     errorContainerRegister.innerHTML = `<p>Datos ingresados incorrectos</p>`
   }
+  
 }
 
 document.addEventListener("DOMContentLoaded", function () {

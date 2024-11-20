@@ -296,3 +296,18 @@ input:focus, select:focus {
 .hidden {
     display: none;
 }
+
+@keyframes mi-animacion {
+    from {
+      transform: translateY(-150%);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+.contenedor{
+    animation: mi-animacion 1s ease-out;
+    padding: 20px;
+}
+
