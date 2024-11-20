@@ -1,3 +1,5 @@
+window.Sistema.isLogged()
+
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
 const btnLogOut = document.querySelector("#log-out")
@@ -108,5 +110,3 @@ function logOut(){
     localStorage.setItem('userLoggedIn', JSON.stringify(""));
 }
 
-sis.navigateToAdmin()
-    

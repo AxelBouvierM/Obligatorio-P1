@@ -14,6 +14,18 @@ body {
     overflow: hidden;
 }
 
+#containerHead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1150px;
+}
+
+#titleContainer{
+    width: 100%;
+    padding-left:300px ;
+}
+
 h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -284,3 +296,18 @@ input:focus, select:focus {
 .hidden {
     display: none;
 }
+
+@keyframes mi-animacion {
+    from {
+      transform: translateY(-150%);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+.contenedor{
+    animation: mi-animacion 1s ease-out;
+    padding: 20px;
+}
+

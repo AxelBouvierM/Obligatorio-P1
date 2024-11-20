@@ -1,4 +1,6 @@
 refreshReservations()
+window.Sistema.isAdminLogged()
+window.Sistema.isLogged()
 
 function refreshReservations() {
     let div = document.querySelector('#tbody-infoGan')
