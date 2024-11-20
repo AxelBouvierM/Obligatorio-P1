@@ -12,7 +12,7 @@ function actualizarDestinos() {
 
     Object.keys(destinos).forEach(key => {
 
-        if (destinos[key]["state"] == true) {
+        if (destinos[key]["state"] == true && destinos[key]["quotas"] > 0) {
             let oferta = destinos[key]["offer"] ? `<p class="oferta">Oferta</p>` : `<p class="oferta hidden">Oferta</p>`
             let vuelos = destinos[key]["flights"] ? 'Incluye vuelos ida y vuelta' : 'No incluye vuelos ida y vuelta'
             let traslado = destinos[key]["transfer"] ? 'Incluye traslados al aeropuerto' : 'No incluye traslados al aeropuerto'
