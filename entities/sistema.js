@@ -22,8 +22,8 @@ class Sistema {
         } else {
             this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
             /*  Sistema.instance = this; */
-            
         }
+        this.preLoadData();
 
     }
 
@@ -89,10 +89,12 @@ class Sistema {
     }
   
     registerUser(firstName, lastName, userName, userPassword, userCreditCard, userCVC) {
-      this.users.push(new User(false, firstName, lastName, userName, userPassword, userCreditCard, userCVC, 15000, 0));
+      let usersFromStorage = JSON.parse(localStorage.getItem('usersDatabase'));
+      let newUser = new User(false, firstName, lastName, userName, userPassword, userCreditCard, userCVC, 15000, 0);
+      usersFromStorage.push(newUser);
+      localStorage.setItem('usersDatabase', JSON.stringify(usersFromStorage));
       this.userLoggedDetails(userName);
-      localStorage.setItem('usersDatabase',JSON.stringify(this.users))
-    }
+      }
   
     findUsername (username){
       let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase')
@@ -105,8 +107,8 @@ class Sistema {
       return isNew;
     }
   
-    userLoggedDetails (username) {
-      let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase');
+    userLoggedDetails (username){
+      let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase')
       let user = usersDatabase.find(user => user.userName === username);
       let userLogged = {
         logged: true,
@@ -118,8 +120,7 @@ class Sistema {
         pwd: user.userPassword,
         userID: user.id,
         miles: user.milesAmount,
-      };
-    
+      };  
       localStorage.setItem('userLoggedIn', JSON.stringify(userLogged));
     }
 
@@ -149,14 +150,29 @@ class Sistema {
         /* localStorage.setItem("reservations", JSON.stringify(this.reservations)) */
     }
     isLogged() {
-        const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
-        document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
-            if (!userLogged.isAdmin) {
-                alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
-                window.location.href = "index.html"
-            }
-        });
+      const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
+      document.addEventListener("DOMContentLoaded", function checkAccess() {
+        if (!userLogged.logged) {
+          alert("Por favor, inicie sesión para acceder a esta página.");
+          window.location.href = "login.html"
+        }
+      });
     }
+
+    isAdminLogged() {
+      const currentUserLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
+      document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
+        if (!currentUserLogged.logged) {
+          alert("Por favor, inicie sesión para acceder a esta página.");
+          window.location.href = "login.html"
+          return
+        }
+        if (!currentUserLogged.isAdmin) {
+          alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
+          window.location.href = "index.html"
+        } 
+      });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
