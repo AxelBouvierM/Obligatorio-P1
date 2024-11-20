@@ -41,16 +41,11 @@ function verifyReserv(event) {
 
     while (index < reserv.length) {
         let element = reserv[index];
-        // Match boton con reserva a validar...
         if (element.reservID == button.getAttribute("id")) {
             if (element.cant > dest[element.destID.split('_')[2]].quotas) {
                 element.state = 'Rechazada'
                 break
             }
-            /* if(millas o efectivo alcanzan?) estado rachazad break*/
-            /* else {
-                element.state = 'Aprobada'
-            } */// cambiar status a rechazada sin cupos disponibles.
             element.state = 'Aprobada'
             break;
         }
@@ -66,7 +61,6 @@ function verifyReserv(event) {
 window.addEventListener('storage', (event) => {
     // Actualizar los destinos ante cambios
     if (event.key === 'reservations') {
-        console.log('captura evento cambio')
         refreshReservations()
     }
 });

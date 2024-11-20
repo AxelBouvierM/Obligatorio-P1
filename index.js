@@ -69,13 +69,15 @@ form.addEventListener('submit', function (event) {
     let cant = document.querySelector('#inputCantPasajeros').value
     let mPayment = document.querySelector('#inputMedioPago').value
     let error = document.querySelector('#emptyForm')
+    let userID = window.Sistema.getItemToLocalStorage('userLoggedIn').userID
 
     if (cant && mPayment) {
         if (cant > 0) {
             error.innerHTML = ''
             /* pendiente agregar el id del usuario dinamico... */
-            window.Sistema.createReservation(cant, mPayment, idDestino, 3, 'Pendiente')
-            window.Sistema.pushItemToLocalStorage('reservations', window.Sistema.reservations)
+            let reservList = window.Sistema.createReservation(cant, mPayment, idDestino, userID, 'Pendiente')
+            console.log('Nueva reserva:' + JSON.stringify(window.Sistema.reservations))
+            //window.Sistema.pushItemToLocalStorage('reservations', window.Sistema.reservations)
 
             modal.close();
         } else {
@@ -107,3 +109,4 @@ function logOut(){
 }
 
 sis.navigateToAdmin()
+    

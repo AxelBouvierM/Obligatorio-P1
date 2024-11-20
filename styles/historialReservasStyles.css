@@ -106,7 +106,7 @@ h2 {
     text-align: center;
 }
 
-.estadoReserva-aprobada, .estadoReserva-rechazada, .estadoReserva-pendiente {
+.estadoReserva-aprobada, .estadoReserva-rechazada, .estadoReserva-pendiente, .estadoReserva-cancelada {
     background-color: #04AA6D;
     width: 100%; /* Ajusta el tamaño para que ocupe toda la fila en pantallas pequeñas */
     border: none;
@@ -157,7 +157,7 @@ h2 {
         font-size: 28px; /* Reducir el tamaño de los títulos */
     }
 
-    .estadoReserva-aprobada, .estadoReserva-rechazada, .estadoReserva-pendiente {
+    .estadoReserva-aprobada, .estadoReserva-rechazada, .estadoReserva-pendiente, .estadoReserva-cancelada {
         width: 80%; /* Hacer que los botones se adapten mejor */
         font-size: 14px; /* Reducir el tamaño de fuente */
         padding: 12px;

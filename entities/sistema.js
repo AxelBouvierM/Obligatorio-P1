@@ -1,6 +1,9 @@
-window.reservID = 0
+if (!localStorage.getItem('reservID')) localStorage.setItem('reservID', 0)
 class Sistema {
     constructor() {
+        /* if (Sistema.instance) {
+            return Sistema.instance; // Si ya existe una instancia, la devolvemos
+        } */
         this.users = [];
         this.preLoadDest = {
             1: new Dest("CARIBE", 1050, true, true, "../img/caribe.webp", "7 días", "6 noches en hotel 5 estrellas", "All inclusive", true, true, 34, 'DEST_ID_1'),
@@ -13,7 +16,14 @@ class Sistema {
             8: new Dest("ROMA", 7850, true, false, "../img/roma.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 54, 'DEST_ID_8'),
             9: new Dest("RANDOM", 7850, false, false, "../img/viajeAmigos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 341, 'DEST_ID_9'),
         };
-        this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
+
+        if (localStorage.getItem("reservations")) {
+            this.reservations = JSON.parse(localStorage.getItem("reservations"))
+        } else {
+            this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
+            /*  Sistema.instance = this; */
+        }
+
     }
 
     pushItemToLocalStorage(key, value) {
@@ -25,17 +35,29 @@ class Sistema {
     }
 
     createReservation(cant, mPayment, destID, userID, state) {
-        let reservation = {cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${window.reservID++}`}
+        let ID = localStorage.getItem('reservID') + 1
+        let reservation = { cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${ID}` }
+        localStorage.setItem('reservID', ID)
         this.reservations.push(reservation)
+        localStorage.setItem("reservations", JSON.stringify(this.reservations))
     }
-    
+
+    modifyReserv(obj) {
+/*         localStorage.removeItem("reservations")
+ */        this.reservations = []
+        obj.forEach(element => {
+/*              rleteservation = { cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${window.reservID++}` }
+ */         this.reservations.push(element)
+        });
+        /* localStorage.setItem("reservations", JSON.stringify(this.reservations)) */
+    }
     isLogged() {
         const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
         document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
-          if (!userLogged.isAdmin) {
-            alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
-            window.location.href = "index.html"
-          }
+            if (!userLogged.isAdmin) {
+                alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
+                window.location.href = "index.html"
+            }
         });
     }
 }
