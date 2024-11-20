@@ -23,6 +23,7 @@ class Sistema {
             this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
             /*  Sistema.instance = this; */
         }
+        this.preLoadData()
 
     }
 
@@ -157,11 +158,11 @@ class Sistema {
         });
     }
 }
+window.Sistema = new Sistema()
+window.Sistema.pushItemToLocalStorage('destinos', window.Sistema.preLoadDest)
 
 document.addEventListener("DOMContentLoaded", function () {
   if (!localStorage.getItem("usersDatabase")) {
     localStorage.setItem("usersDatabase", JSON.stringify(window.Sistema.users));
   }
 });
-
-window.Sistema = new Sistema()

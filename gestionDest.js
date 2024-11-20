@@ -1,7 +1,7 @@
 const modal = document.querySelector("#modal");
 const form = document.querySelector("#form");
-window.Sistema.isAdminLogged()
-window.Sistema.isLogged()
+/* window.Sistema.isAdminLogged()
+window.Sistema.isLogged() */
 
 let preLoadDest = window.Sistema
 

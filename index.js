@@ -1,4 +1,4 @@
-window.Sistema.isLogged()
+/* window.Sistema.isLogged() */
 
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
