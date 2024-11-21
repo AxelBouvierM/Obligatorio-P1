@@ -51,23 +51,11 @@ u {
 }
 
 #section-informeGanancias{
-    /* width: 100%; */
     height: auto;
-   /*  display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
     margin: 10px;
-    /* padding: 25px; */
 }
 
 #table-container{
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
     width: 100%;
     height: auto;
     padding-top: 60px;
@@ -80,11 +68,6 @@ table {
     padding-top: 10px;
     border-collapse: collapse;
     width: 100%;
-    /* margin: 0 auto;
-    width: 1280px;
-    text-align: left;
-    border-collapse: collapse;
-    width: 100%; */
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24), 0 4px 5px 0 rgba(0,0,0,0.19);
 }
 
@@ -93,11 +76,6 @@ table {
     transition: transform 0.3s ease-in-out;
   }
 
-/* table:hover{
-    transform: scale(1.08);
-    transition: 1s ease-in-out;
-}
- */
 tr, td{
     padding: 0px;
     height: 50px;

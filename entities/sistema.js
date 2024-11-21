@@ -2,25 +2,26 @@ if (!localStorage.getItem('reservID')) localStorage.setItem('reservID', 0)
 class Sistema {
 	constructor() {
 		this.users = [];
-		this.preLoadDest = {
-			1: new Dest("CARIBE", 1050, true, true, "../img/caribe.webp", "7 días", "6 noches en hotel 5 estrellas", "All inclusive", true, true, 34, 'DEST_ID_1'),
-			2: new Dest("EUROPA", 4500, false, true, "../img/europa.webp", "15 días", "14 noches en hotel 4 estrellas", "Desayuno incluido", true, true, 84, 'DEST_ID_2'),
-			3: new Dest("ASIA Y ÁFRICA", 7850, true, true, "../img/africa.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 23, 'DEST_ID_3'),
-			4: new Dest("AMSTERDAM", 7850, false, true, "../img/amsterdam.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 123, 'DEST_ID_4'),
-			5: new Dest("MARRUECOS", 7850, true, true, "../img/marruecos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 99, 'DEST_ID_5'),
-			6: new Dest("MENDOZA", 7850, false, true, "../img/mendoza.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 27, 'DEST_ID_6'),
-			7: new Dest("RÍO DE JANEIRO", 7850, true, false, "../img/rio.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 290, 'DEST_ID_7'),
-			8: new Dest("ROMA", 7850, true, false, "../img/roma.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 54, 'DEST_ID_8'),
-			9: new Dest("RANDOM", 7850, false, false, "../img/viajeAmigos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 341, 'DEST_ID_9'),
-		};
-
+		if (localStorage.getItem("destinos")) {
+			this.preLoadDest = JSON.parse(localStorage.getItem("destinos"))
+		} else {
+			this.preLoadDest = {
+				1: new Dest("CARIBE", 1050, true, true, "../img/caribe.webp", "7 días", "6 noches en hotel 5 estrellas", "All inclusive", true, true, 34, 'DEST_ID_1'),
+				2: new Dest("EUROPA", 4500, false, true, "../img/europa.webp", "15 días", "14 noches en hotel 4 estrellas", "Desayuno incluido", true, true, 84, 'DEST_ID_2'),
+				3: new Dest("ASIA Y ÁFRICA", 7850, true, true, "../img/africa.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 23, 'DEST_ID_3'),
+				4: new Dest("AMSTERDAM", 7850, false, true, "../img/amsterdam.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 123, 'DEST_ID_4'),
+				5: new Dest("MARRUECOS", 7850, true, true, "../img/marruecos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 99, 'DEST_ID_5'),
+				6: new Dest("MENDOZA", 7850, false, true, "../img/mendoza.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 27, 'DEST_ID_6'),
+				7: new Dest("RÍO DE JANEIRO", 7850, true, false, "../img/rio.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 290, 'DEST_ID_7'),
+				8: new Dest("ROMA", 7850, true, false, "../img/roma.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 54, 'DEST_ID_8'),
+				9: new Dest("RANDOM", 7850, false, false, "../img/viajeAmigos.webp", "30 días", "29 noches en hotel 5 estrellas", "No incluye comidas", true, true, 341, 'DEST_ID_9'),
+			};
+		}
 		if (localStorage.getItem("reservations")) {
 			this.reservations = JSON.parse(localStorage.getItem("reservations"))
 		} else {
-			this.reservations = [/* {"cant":"123123123","mPayment":"efectivo","destID":"DEST_ID_1","userId":3,"state":"Pendiente","reservID":0} */];
-			/*  Sistema.instance = this; */
+			this.reservations = [];
 		}
-		/* this.preLoadData(); */
 	}
 	preLoadData() {
 		this.users.push(
@@ -119,14 +120,32 @@ class Sistema {
 		localStorage.setItem('userLoggedIn', JSON.stringify(userLogged));
 	}
 
+	/**
+	 * Funcion para pushear data al localStorage
+	 * @param {string} key Nombre de la key
+	 * @param {*} value Item a pushear
+	 */
 	pushItemToLocalStorage(key, value) {
 		localStorage.setItem(key, JSON.stringify(value))
 	}
 
+	/**
+	 * Funcion para recuperar data al localStorage
+	 * @param {*} key Nombre de la key
+	 * @returns Item guardado
+	 */
 	getItemToLocalStorage(key) {
 		return JSON.parse(localStorage.getItem(key))
 	}
 
+	/**
+	 * Funcion para crear las reservas.
+	 * @param {*} cant Cantidad de cupos a reservar
+	 * @param {*} mPayment Metodo de pago seleccionado
+	 * @param {*} destID ID del destino seleccionado
+	 * @param {*} userID ID del usuario que realiza la reserva
+	 * @param {*} state Estado en el que se crea la reserva
+	 */
 	createReservation(cant, mPayment, destID, userID, state) {
 		let ID = +localStorage.getItem('reservID') + 1
 		let reservation = { cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${ID}` }
@@ -136,13 +155,10 @@ class Sistema {
 	}
 
 	modifyReserv(obj) {
-/*         localStorage.removeItem("reservations")
- */        this.reservations = []
+       this.reservations = []
 		obj.forEach(element => {
-/*              rleteservation = { cant: cant, mPayment: mPayment, destID: destID, userId: userID, state: state, reservID: `RESERV_ID_${window.reservID++}` }
- */         this.reservations.push(element)
+         this.reservations.push(element)
 		});
-		/* localStorage.setItem("reservations", JSON.stringify(this.reservations)) */
 	}
 	isLogged() {
 		const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
@@ -178,8 +194,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.Sistema = new Sistema()
 window.Sistema.preLoadData()
-window.Sistema.pushItemToLocalStorage('destinos', window.Sistema.preLoadDest)
+if (!localStorage.getItem('destinos')) window.Sistema.pushItemToLocalStorage('destinos', window.Sistema.preLoadDest)
 if (!localStorage.getItem('reservations')) {
+	console.log('Entro a precargar destinos')
 	window.Sistema.createReservation("1", "efectivo", "DEST_ID_1", 8, 'Pendiente')
 	window.Sistema.createReservation("4", "millas", "DEST_ID_4", 8, 'Aprobada')
 	window.Sistema.createReservation("3", "efectivo", "DEST_ID_3", 9, 'Pendiente')

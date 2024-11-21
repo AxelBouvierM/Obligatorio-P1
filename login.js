@@ -39,8 +39,6 @@ function login() {
   currentUser = window.Sistema.findingUser(inputUsername, userPassword);
   adminUser = window.Sistema.isAdmin(inputUsername);
 
-  console.log(window.Sistema.findingUser(inputUsername, userPassword))
-  console.log(window.Sistema.isAdmin(inputUsername))
 
   if (inputUsername != "" || userPassword != "") {
     if (currentUser == false) {
@@ -101,7 +99,6 @@ function register(){
   let inputSignUpCVC = qsValue("inputSignUpCVC");
   let errorContainerRegister = qs("errorContainerRegister")
   
-  console.log(inputSignUpCreditCard)
   
   if ( window.Sistema.findUsername(inputSignUpUsername)  === false ) {
     errorContainerRegister.innerHTML = `<p>Nombre de usuario ya registrado</p>`

@@ -151,7 +151,6 @@ h2{
   @keyframes mi-animacion-2{
     0% {
     transform: translateY(-200%);
-    transform: ;
     background-color: #02304700;
 
     }

@@ -177,16 +177,6 @@ u {
     font-size: 4vw;
 }
 
-/* #paquetes .contenedor article ul {
-    list-style-position: inside;
-    padding-top: 5px;
-} */
-
-/* #paquetes .contenedor article ul li {
-    padding-top: 8px;
-    font-size: 13px;
-} */
-
 #lastSection .contenedor article #aCont {
     display: flex;
     justify-content: center;

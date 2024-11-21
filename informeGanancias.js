@@ -2,6 +2,9 @@ refreshReservations()
 window.Sistema.isAdminLogged()
 window.Sistema.isLogged()
 
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican las reservas.
+ */
 function refreshReservations() {
     let div = document.querySelector('#tbody-infoGan')
     let reservations = window.Sistema.getItemToLocalStorage('reservations')
@@ -31,7 +34,6 @@ function refreshReservations() {
 					</tr>`
 
         } else {
-            console.log('error')
             error.innerHTML = '¡Aun no hay reservas aprobadas y/o abonadas con efectivo!'
         }
     } else {
@@ -40,6 +42,12 @@ function refreshReservations() {
 
 }
 
+/**
+ * Funcion para filtrar las reservas aprobadas y pagas en efectivo para incrementar las ganacias.
+ * @param {Array} reservations Array de reservas
+ * @param {Object} dest Objeto de destinos
+ * @returns 
+ */
 function infoGanancias(reservations, dest) {
     let tmp = {}
     reservations.forEach(element => {

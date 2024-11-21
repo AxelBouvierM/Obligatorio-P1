@@ -12,15 +12,6 @@
 	<link rel="stylesheet" href="../styles/adminStyles.css" />
 	<link rel="stylesheet" href="../styles/informeGananciasStyles.css" />
 	<title>Informe de ganancias - Admin</title>
-<!-- 	<script>
-        const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
-        document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
-          if (!userLogged.isAdmin) {
-            alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
-            window.location.href = "index.html"
-          }
-        });
-      </script> -->
 </head>
 
 <body>
@@ -30,7 +21,7 @@
 			<a href="gestionarReservas.html">Gestionar reservas</a>
 			<a href="gestionarDestinos.html">Gestionar destinos</a>
 			<a href="#">Informe de ganancias</a>
-			<a href="index.html" target="_blank">Vista cliente</a>	
+			<a href="index.html">Vista cliente</a>	
 		</nav>
 	</header>
 
@@ -45,90 +36,14 @@
 					<td>Total generado</td>
 				</thead>
 				<tbody id="tbody-infoGan">
-					<!-- <tr>
-						<td>CARIBE</td>
-						<td>60</td>
-						<td>USD 63.000</td>
-					</tr>
-					<tr>
-						<td>EUROPA</td>
-						<td>120</td>
-						<td>USD 540.000</td>
-					</tr>
-					<tr>
-						<td>ASIA Y ÁFRICA</td>
-						<td>50</td>
-						<td>USD 392.500</td>
-					</tr>
-					<tr>
-						<td>AMSTERDAM</td>
-						<td>90</td>
-						<td>USD 706.500</td>
-					</tr>
-					<tr>
-						<td>MARRUECOS</td>
-						<td>80</td>
-						<td>USD 628.000</td>
-					</tr>
-					<tr>
-						<td>MENDOZA</td>
-						<td>40</td>
-						<td>USD 314.000</td>
-					</tr>
-					<tr id="totalGenerado">
-						<td>Total generado</td>
-						<td></td>
-						<td>USD 2.644.000</td>
-					</tr> -->
 				</tbody>
 			</table>
 		</div>
 	</section>
 
-	<!-- <section id="graf" class="contenedor">
-		<h2>Ventas de Viajes por Destino</h2>
-		<div class="chart-wrapper">
-			<div class="y-axis">
-				<div>100%</div>
-				<div>75%</div>
-				<div>50%</div>
-				<div>25%</div>
-				<div>0%</div>
-			</div>
-			<div class="chart-container">
-				<div class="bar" style="height: 12%;">CARIBE - $11,000</div>
-				<div class="bar" style="height: 24%;">EUROPA - $6,000</div>
-				<div class="bar" style="height: 10%;">ASIA Y ÁFRICA - $7,000</div>
-				<div class="bar" style="height: 18%;">AMSTERDAM - $11,000</div>
-				<div class="bar" style="height: 16%;">MARRUECOS - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-				<div class="bar" style="height: 8%;">MENDOZA - $5,000</div>
-			</div>
-		</div>
-	</section>
-
-	<footer>
-		<img src="../img/logoChico.png" alt="Logo de VIAJAUY" />
-		<p>Axel Bouvier - Mauricio Montero</p>
-	</footer> -->
     <script src="../entities/Users.js"></script>    
 	<script src="../entities/events.js"></script>
     <script src="../entities/sistema.js"></script>
-    <!-- <script src="../gestionDest.js"></script> -->
     <script src="../informeGanancias.js"></script>
 </body>
 

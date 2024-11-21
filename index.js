@@ -1,4 +1,4 @@
-/* window.Sistema.isLogged() */
+window.Sistema.isLogged()
 
 let modal = document.querySelector("#modal");
 let form = document.querySelector("#form");
@@ -7,6 +7,9 @@ btnLogOut.addEventListener("click", logOut)
 // Carga los destinos al iniciar la web
 actualizarDestinos();
 
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican los destinos.
+ */
 function actualizarDestinos() {
     let div = document.querySelector('#articlesPaquetes')
     div.innerHTML = ''
@@ -44,6 +47,10 @@ function actualizarDestinos() {
     openModal()
 }
 
+/**
+ * Funcion para validar si existe una reserva pendiente de aprobacion a ese destino, en caso de existir desactiva los inputs y el boton.
+ * @param {*} idDestino ID del destino
+ */
 function isPending(idDestino) {
     let reserv = window.Sistema.getItemToLocalStorage('reservations')
     let cant = document.querySelector('#inputCantPasajeros')
@@ -61,23 +68,17 @@ function isPending(idDestino) {
                     document.querySelector('#inputCantPasajeros').disabled = true
                     document.querySelector('#inputMedioPago').disabled = true
                     button.disabled = true
-                }/*  else if (idDestino == element.destID && element.state != 'Pendiente') {
-                    console.log('esta es una ejecucion')
-                    document.querySelector('#inputCantPasajeros').disabled = false
-                    document.querySelector('#inputMedioPago').disabled = false
-                    button.disabled = false
-                } else if (idDestino != element.destID ) {
-                    console.log('esta es una ejecucion')
-                    document.querySelector('#inputCantPasajeros').disabled = false
-                    document.querySelector('#inputMedioPago').disabled = false
-                    button.disabled = false
-                } */
+                }
             }
         })
     }
 }
 
+
 let idDestino = 0
+/**
+ * Funcion para abrir el modal con el formulario de reserva
+ */
 function openModal() {
     let buttons = document.querySelectorAll(".open-modal");
     // Abrir el modal al hacer clic en cualquiera de los botones
@@ -101,7 +102,7 @@ function openModal() {
     });
 }
 
-// Cerrar el modal al enviar el formulario
+// Cerrar el modal al enviar el formulario y crear la reserva
 form.addEventListener('submit', function (event) {
     event.preventDefault();
 

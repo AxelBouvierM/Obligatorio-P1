@@ -11,15 +11,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../styles/gestDestinosStyles.css">
     <title>Gestionar destinos - ADMIN</title>
-<!--     <script>
-        const userLogged = JSON.parse(localStorage.getItem("userLoggedIn"));
-        document.addEventListener("DOMContentLoaded", function checkAdminAccess() {
-          if (!userLogged.isAdmin) {
-            alert("Usted no tiene permisos de administrador. Será redirigido a la página principal.");
-            window.location.href = "index.html"
-          }
-        });
-      </script> -->
 </head>
 
 <body>
@@ -29,25 +20,9 @@
             <a href="gestionarReservas.html">Gestionar reservas</a>
             <a href="gestionarDestinos.html">Gestionar destinos</a>
             <a href="informeGanancias.html">Informe de ganancias</a>
-            <a href="index.html" target="_blank">Vista cliente</a>
+            <a href="index.html">Vista cliente</a>
         </nav>
     </header>
-
-    <!-- <section id="gestDestinos">
-        <div class="destino">
-            <p>Destino: Caribe</p>
-            <p>Precio: USD 1050</p>
-            <p>Oferta: Si</p>
-            <p>Estado: Activo</p>
-        </div>
-
-        <div class="destino">
-            <p>Destino: Caribe</p>
-            <p>Precio: USD 1050</p>
-            <p>Oferta: Si</p>
-            <p>Estado: Activo</p>
-        </div>
-    </section> -->
 
     <section id="gestDestinos">
         <div class="contenedor">
@@ -64,66 +39,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr id="1" class="open-modal">
-                        <td>Caribe</td>
-                        <td>USD 1050</td>
-                        <td>SI</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Europa</td>
-                        <td>USD 4500</td>
-                        <td>NO</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Asia y África</td>
-                        <td>USD 7850</td>
-                        <td>SI</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Amsterdam</td>
-                        <td>USD 7850</td>
-                        <td>NO</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Marruecos</td>
-                        <td>USD 7850</td>
-                        <td>SI</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Mendoza</td>
-                        <td>USD 7850</td>
-                        <td>NO</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Río de Janeiro</td>
-                        <td>USD 7850</td>
-                        <td>SI</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Roma</td>
-                        <td>USD 7850</td>
-                        <td>SI</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Random</td>
-                        <td>USD 7850</td>
-                        <td>NO</td>
-                        <td>Activo</td>
-                    </tr>
-                    <tr class="open-modal">
-                        <td>Punta del Este</td>
-                        <td>USD 7850</td>
-                        <td>NO</td>
-                        <td>Inactivo</td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -177,9 +92,6 @@
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                 </select>
-
-                <!-- <label for="inputModalidad">Modalidad</label>
-                <input type="text" id="inputModalidad" value=""> -->
 
                 <label for="inputCupos">Cupos</label>
                 <input type="text" id="inputCupos" value="" required>

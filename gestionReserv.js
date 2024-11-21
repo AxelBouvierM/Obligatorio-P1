@@ -2,6 +2,9 @@ refreshReservations()
 window.Sistema.isAdminLogged()
 window.Sistema.isLogged()
 
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican las reservas.
+ */
 function refreshReservations() {
     let div = document.querySelector('#tbodyReservas')
     let reservations = window.Sistema.getItemToLocalStorage('reservations')
@@ -34,6 +37,10 @@ function refreshReservations() {
 
 }
 
+/**
+ * Funcion para procesar las reservas pendientes. Hace las validaciones pertinentes para aprobarlas o rechazarlas.
+ * @param {object} event evento del boton seleccionado
+ */
 function verifyReserv(event) {
     let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase');
     let userLoggedIn = window.Sistema.getItemToLocalStorage('userLoggedIn');
@@ -42,77 +49,70 @@ function verifyReserv(event) {
     let dest = window.Sistema.getItemToLocalStorage('destinos') || [];
     let index = 0;
     while (index < reserv.length) {
-        let element = reserv[index];
-        if (element.reservID == button.getAttribute("id")) {
-            let destIndex = parseInt(element.destID.split('_')[2], 10);
+        if (reserv[index].reservID == button.getAttribute("id")) {
+            let destIndex = reserv[index].destID.split('_')[2]
             let destination = dest[destIndex];
 
             // Validar si el número de personas excede la cantidad de cupos disponibles
-            if (element.cant > destination.quotas) {
-                console.log('Rechazada por exceso de cupos');
-                element.state = 'Rechazada';
+            if (reserv[index].cant > dest[destIndex].quotas) {
+                reserv[index].state = 'Rechazada';
                 break;
             }
 
-            let user = usersDatabase.find(user => user.id === element.userId);
+            let user = usersDatabase.find(user => user.id === reserv[index].userId);
 
             if (!user) {
-                console.log("Usuario no encontrado.");
-                element.state = 'Rechazada';
+                /* Usuario no encontrado */
+                reserv[index].state = 'Rechazada';
                 break;
             }
 
             // Lógica de pago con efectivo
-            let totalPrice = element.cant * destination.price;
-            if (element.mPayment === 'efectivo') {
+            let totalPrice = reserv[index].cant * dest[destIndex].price;
+            if (reserv[index].mPayment === 'efectivo') {
                 if (totalPrice > user.userBudget) {
-                    console.log('Rechazada por falta de crédito');
-                    element.state = 'Rechazada';
+                    /* Rechazada por falta de credito */
+                    reserv[index].state = 'Rechazada';
                     break;
                 }
                 user.userBudget -= totalPrice;
                 userLoggedIn.budget = user.userBudget;
-                element.state = 'Aprobada';
+                reserv[index].state = 'Aprobada';
                 user.milesAmount += Math.floor(totalPrice / 100);
-                console.log(user.milesAmount);
-                console.log('Aprobada con efectivo');
             }
             // Lógica de pago con millas
-            else if (element.mPayment === 'millas') {
+            else if (reserv[index].mPayment === 'millas') {
                 if (totalPrice > user.milesAmount) {
                     let priceToCover = totalPrice - user.milesAmount;
                     if (user.userBudget >= priceToCover) {
                         user.milesAmount = 0;
-                        element.mPayment === 'efectivo';
+                        reserv[index].mPayment = 'efectivo';
                         user.userBudget -= priceToCover;
                         userLoggedIn.budget = user.userBudget;
                         user.milesAmount += Math.floor(totalPrice / 100);
                         userLoggedIn.miles = user.milesAmount;
-                        console.log(user.milesAmount);
-                        console.log('Aprobada con efectivo');
-                        element.state = 'Aprobada';
+                        reserv[index].state = 'Aprobada';
                     } else {
-                        console.log('Rechazada por falta de efectivo');
-                        element.state = 'Rechazada';
+                        /* Rechazada por falta de efectivo */
+                        reserv[index].state = 'Rechazada';
                     }
                 } else {
                     user.milesAmount -= totalPrice;
                     userLoggedIn.miles = user.milesAmount;
-                    console.log('Aprobada con millas');
-                    element.state = 'Aprobada';
+                    /* Aprobada con millas */
+                    reserv[index].state = 'Aprobada';
                 }
             }
             // Método de pago inválido
             else {
-                console.log('Rechazada por método de pago inválido');
-                element.state = 'Rechazada';
+                reserv[index].state = 'Rechazada';
             }
 
             // Si la reserva es aprobada, actualizar las cuotas del destino
-            if (element.state === 'Aprobada') {
-                destination.quotas -= element.cant;
-                if (destination.quotas === 0) {
-                    destination.state = false;
+            if (reserv[index].state === 'Aprobada') {
+                dest[destIndex].quotas -= reserv[index].cant;
+                if (dest[destIndex].quotas === 0) {
+                    dest[destIndex].state = false;
                 }
             }
             break;
@@ -121,6 +121,7 @@ function verifyReserv(event) {
     }
 
     // Guardar las reservas y datos actualizados en el localStorage
+    window.Sistema.preLoadDest = reserv
     window.Sistema.pushItemToLocalStorage('reservations', reserv);
     window.Sistema.pushItemToLocalStorage('usersDatabase', usersDatabase);
     window.Sistema.pushItemToLocalStorage('destinos', dest);

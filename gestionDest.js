@@ -1,15 +1,15 @@
 const modal = document.querySelector("#modal");
 const form = document.querySelector("#form");
-/* window.Sistema.isAdminLogged()
-window.Sistema.isLogged() */
+window.Sistema.isAdminLogged()
+window.Sistema.isLogged()
 
 let preLoadDest = window.Sistema
 
 window.addEventListener('DOMContentLoaded', addDest);
-
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican los destinos.
+ */
 function addDest() {
-    // mover a sis.
-    /* localStorage.setItem('destinos', JSON.stringify(preLoadDest)) */
     preLoadDest.pushItemToLocalStorage('destinos', preLoadDest.preLoadDest)
     let destinos = preLoadDest.getItemToLocalStorage('destinos')
 
@@ -63,7 +63,6 @@ function addValuesForm(id, destinos) {
             if (destinos) {
                 id = this.cells[0].textContent
                 id = id.split('_')[2]
-                console.log(destinos[+id]['id'])
             } else {
                 nuevoDestino = true
             }
@@ -104,6 +103,10 @@ modal.addEventListener('click', function (event) {
     }
 });
 
+/**
+ * Funcion para validar si los datos ingresados estan vacios.
+ * @param {Array} items Array con los valores a validar.
+ */
 function isEmpty(items) {
     let flag = false
     items.forEach(elements => {
@@ -114,6 +117,9 @@ function isEmpty(items) {
     return flag
 }
 
+/** 
+ * Al enviar el formulario, se agrega el nuevo destino y/o modifica el destino seleccionado. 
+*/ 
 let buttonSendMod = document.querySelector('#send')
 buttonSendMod.addEventListener('click', function (event) {
     let id = document.getElementById("inputID").value

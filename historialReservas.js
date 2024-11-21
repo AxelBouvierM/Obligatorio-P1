@@ -1,12 +1,16 @@
 refreshReservations()
 window.Sistema.isLogged()
 
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican las reservas.
+ */
 function refreshReservations() {
     let div = document.querySelector('.container-background-1')
     let reservations = window.Sistema.getItemToLocalStorage('reservations')
     let dest = window.Sistema.getItemToLocalStorage('destinos')
     let error = document.querySelector('#emptyReserv')
     let userID = window.Sistema.getItemToLocalStorage('userLoggedIn').userID
+    let flag = false
     div.innerHTML = ''
 
     if (reservations && reservations.lenght != 0) {
@@ -14,6 +18,7 @@ function refreshReservations() {
 
         reservations.forEach(element => {
             if (element.userId == userID) {
+                flag = true
                 error.innerHTML = ''
                 let CancelButton = '<input type="button" value="Cancelar reserva" class="cancelarReserva" hidden>'
                 if (element.state == 'Pendiente') CancelButton = `<input type="button" id=${element.reservID} value="Cancelar reserva" class="cancelarReserva">`
@@ -29,7 +34,7 @@ function refreshReservations() {
                     ${CancelButton}
                 </div>`
             } else {
-                error.innerHTML = '¡Aun no hay reservas realizadas!'
+                if (flag == false) error.innerHTML = '¡Aun no hay reservas realizadas!'
             }
         });
         document.querySelectorAll('.cancelarReserva').forEach(button => {
@@ -41,10 +46,10 @@ function refreshReservations() {
 
 }
 
-/* 
-let button = document.querySelector('.cancelarReserva')
-button.addEventListener('click', cancelReserv) */
-
+/**
+ * Funcion para cancelar las reservas en estado pendiente
+ * @param {*} event evento del boton seleccionado
+ */
 function cancelReserv(event) {
     let button = event.target
     let id = button.getAttribute("id")

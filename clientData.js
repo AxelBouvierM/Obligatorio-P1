@@ -8,8 +8,6 @@ addEventListener("DOMContentLoaded", function displayData (){
     let userLogged = localStorage.getItem('userLoggedIn');
     let user = JSON.parse(userLogged);
     let informationContainer = document.querySelector("#information-container");
-    console.log(user);
-    console.log(informationContainer);
     informationContainer.innerHTML = `
     <h2>Información del usuario</h2>
     <p><b>Nombre:</b>  ${user.firstName}</p>

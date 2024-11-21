@@ -2,6 +2,9 @@ refreshTotalReserv()
 window.Sistema.isLogged()
 window.Sistema.isAdminLogged()
 
+/**
+ * Funcion para cargar datos, se ejecuta al inciar la pagina como tambien si se modifican las reservas.
+ */
 function refreshTotalReserv() {
     let pendientes = document.querySelector('#pendientes')
     let aprobadas = document.querySelector('#aprobadas')
