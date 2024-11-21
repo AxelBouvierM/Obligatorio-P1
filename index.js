@@ -43,6 +43,40 @@ function actualizarDestinos() {
     })
     openModal()
 }
+
+function isPending(idDestino) {
+    let reserv = window.Sistema.getItemToLocalStorage('reservations')
+    let cant = document.querySelector('#inputCantPasajeros')
+    let mPayment = document.querySelector('#inputMedioPago')
+    let userID = window.Sistema.getItemToLocalStorage('userLoggedIn').userID
+    let button = document.querySelector('#send')
+    let error = document.querySelector('#emptyForm')
+
+
+    if (reserv && reserv.length != 0) {
+        reserv.forEach(element => {
+            if (element.userId == userID) {
+                if (idDestino == element.destID && element.state == 'Pendiente') {
+                    error.innerHTML = '¡Aun tienes una reserva pendiente de aprobación a este destino!'
+                    document.querySelector('#inputCantPasajeros').disabled = true
+                    document.querySelector('#inputMedioPago').disabled = true
+                    button.disabled = true
+                }/*  else if (idDestino == element.destID && element.state != 'Pendiente') {
+                    console.log('esta es una ejecucion')
+                    document.querySelector('#inputCantPasajeros').disabled = false
+                    document.querySelector('#inputMedioPago').disabled = false
+                    button.disabled = false
+                } else if (idDestino != element.destID ) {
+                    console.log('esta es una ejecucion')
+                    document.querySelector('#inputCantPasajeros').disabled = false
+                    document.querySelector('#inputMedioPago').disabled = false
+                    button.disabled = false
+                } */
+            }
+        })
+    }
+}
+
 let idDestino = 0
 function openModal() {
     let buttons = document.querySelectorAll(".open-modal");
@@ -57,6 +91,11 @@ function openModal() {
             cant.value = ''
             error.innerHTML = ''
 
+            document.querySelector('#inputCantPasajeros').disabled = false
+            document.querySelector('#inputMedioPago').disabled = false
+            document.querySelector('#send').disabled = false
+            isPending(idDestino)
+
             modal.showModal();
         });
     });
@@ -64,23 +103,18 @@ function openModal() {
 
 // Cerrar el modal al enviar el formulario
 form.addEventListener('submit', function (event) {
-    console.log(idDestino)
-
     event.preventDefault();
 
     let cant = document.querySelector('#inputCantPasajeros').value
     let mPayment = document.querySelector('#inputMedioPago').value
     let error = document.querySelector('#emptyForm')
     let userID = window.Sistema.getItemToLocalStorage('userLoggedIn').userID
+    error.innerHTML = ''
 
     if (cant && mPayment) {
         if (cant > 0) {
             error.innerHTML = ''
-            /* pendiente agregar el id del usuario dinamico... */
             let reservList = window.Sistema.createReservation(cant, mPayment, idDestino, userID, 'Pendiente')
-            console.log('Nueva reserva:' + JSON.stringify(window.Sistema.reservations))
-            //window.Sistema.pushItemToLocalStorage('reservations', window.Sistema.reservations)
-
             modal.close();
         } else {
             error.innerHTML = 'La cantidad de pasajeros debe ser mayor a 0'
@@ -106,7 +140,7 @@ window.addEventListener('storage', (event) => {
     }
 });
 
-function logOut(){
+function logOut() {
     localStorage.setItem('userLoggedIn', JSON.stringify(""));
 }
 

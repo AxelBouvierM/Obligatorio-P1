@@ -4,19 +4,21 @@ window.Sistema.isLogged()
 function refreshReservations() {
     let div = document.querySelector('.container-background-1')
     let reservations = window.Sistema.getItemToLocalStorage('reservations')
-    console.log(`refreshReservation(): ${JSON.stringify(reservations)}`)
     let dest = window.Sistema.getItemToLocalStorage('destinos')
     let error = document.querySelector('#emptyReserv')
+    let userID = window.Sistema.getItemToLocalStorage('userLoggedIn').userID
     div.innerHTML = ''
 
     if (reservations && reservations.lenght != 0) {
         error.innerHTML = ''
 
         reservations.forEach(element => {
-            let CancelButton = '<input type="button" value="Cancelar reserva" class="cancelarReserva" hidden>'
-            if (element.state == 'Pendiente') CancelButton = `<input type="button" id=${element.reservID} value="Cancelar reserva" class="cancelarReserva">`
-            
-            div.innerHTML += `<div class="reservas">
+            if (element.userId == userID) {
+                error.innerHTML = ''
+                let CancelButton = '<input type="button" value="Cancelar reserva" class="cancelarReserva" hidden>'
+                if (element.state == 'Pendiente') CancelButton = `<input type="button" id=${element.reservID} value="Cancelar reserva" class="cancelarReserva">`
+
+                div.innerHTML += `<div class="reservas">
                     <h2>${dest[element.destID.split('_')[2]].dest}</h2>
                     <div class="informacion-adicional container-informacion-adicional">
                         <p class="cantidadPersonas informacion-adicional">Cantidad de personas: ${element.cant}</p>
@@ -26,6 +28,9 @@ function refreshReservations() {
                     <input type="button" value=${element.state} class="estadoReserva-${element.state.toLowerCase()}" disabled>
                     ${CancelButton}
                 </div>`
+            } else {
+                error.innerHTML = '¡Aun no hay reservas realizadas!'
+            }
         });
         document.querySelectorAll('.cancelarReserva').forEach(button => {
             button.addEventListener('click', cancelReserv);
