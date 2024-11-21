@@ -60,8 +60,6 @@ function login() {
     }
 }
 
-
-
 function verifyEmptinessRegister() {
   let inputSignUpName = qsValue("inputSignUpName");
   let inputSignUpLastName = qsValue("inputSignUpLastName");
