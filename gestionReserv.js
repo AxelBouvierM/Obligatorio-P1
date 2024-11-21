@@ -35,82 +35,101 @@ function refreshReservations() {
 }
 
 function verifyReserv(event) {
-    let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase')
+    let usersDatabase = window.Sistema.getItemToLocalStorage('usersDatabase');
+    let userLoggedIn = window.Sistema.getItemToLocalStorage('userLoggedIn');
     let button = event.target;
-    let reserv = window.Sistema.getItemToLocalStorage('reservations');
-    let dest = window.Sistema.getItemToLocalStorage('destinos');
+    let reserv = window.Sistema.getItemToLocalStorage('reservations') || [];
+    let dest = window.Sistema.getItemToLocalStorage('destinos') || [];
     let index = 0;
-    console.log(reserv);
-
     while (index < reserv.length) {
         let element = reserv[index];
         if (element.reservID == button.getAttribute("id")) {
-            let destIndex = element.destID.split('_')[2];
+            let destIndex = parseInt(element.destID.split('_')[2], 10);
             let destination = dest[destIndex];
 
             // Validar si el número de personas excede la cantidad de cupos disponibles
             if (element.cant > destination.quotas) {
+                console.log('Rechazada por exceso de cupos');
+                element.state = 'Rechazada';
+                break;
+            }
+
+            let user = usersDatabase.find(user => user.id === element.userId);
+
+            if (!user) {
+                console.log("Usuario no encontrado.");
                 element.state = 'Rechazada';
                 break;
             }
 
             // Lógica de pago con efectivo
-            if (element.mPayment == 'efectivo') {
-                let totalPrice = element.cant * destination.price;
-                if (totalPrice > window.Sistema.user.userBudget) {
+            let totalPrice = element.cant * destination.price;
+            if (element.mPayment === 'efectivo') {
+                if (totalPrice > user.userBudget) {
+                    console.log('Rechazada por falta de crédito');
                     element.state = 'Rechazada';
                     break;
                 }
+                user.userBudget -= totalPrice;
+                userLoggedIn.budget = user.userBudget;
+                element.state = 'Aprobada';
+                user.milesAmount += Math.floor(totalPrice / 100);
+                console.log(user.milesAmount);
+                console.log('Aprobada con efectivo');
             }
-
             // Lógica de pago con millas
-            else if (element.mPayment == 'millas') {
-                let totalPrice = element.cant * destination.price;
-                
-                if (totalPrice > window.Sistema.user.milesAmount) {
-                    // Si no tiene suficientes millas, intentar usar crédito para cubrir la diferencia
-                    let priceToCover = totalPrice - window.Sistema.user.milesAmount;
-                    if (window.Sistema.user.userBudget >= priceToCover) {
-                        // Descontar millas
-                        window.Sistema.user.milesAmount = 0;
-                        // Descontar la diferencia en crédito
-                        window.Sistema.user.userBudget -= priceToCover;
+            else if (element.mPayment === 'millas') {
+                if (totalPrice > user.milesAmount) {
+                    let priceToCover = totalPrice - user.milesAmount;
+                    if (user.userBudget >= priceToCover) {
+                        user.milesAmount = 0;
+                        element.mPayment === 'efectivo';
+                        user.userBudget -= priceToCover;
+                        userLoggedIn.budget = user.userBudget;
+                        user.milesAmount += Math.floor(totalPrice / 100);
+                        userLoggedIn.miles = user.milesAmount;
+                        console.log(user.milesAmount);
+                        console.log('Aprobada con efectivo');
                         element.state = 'Aprobada';
                     } else {
-                        // Si no tiene suficiente crédito, rechazar la reserva
+                        console.log('Rechazada por falta de efectivo');
                         element.state = 'Rechazada';
                     }
                 } else {
-                    // Si tiene suficientes millas, descontarlas completamente
-                    window.Sistema.user.milesAmount -= totalPrice;
+                    user.milesAmount -= totalPrice;
+                    userLoggedIn.miles = user.milesAmount;
+                    console.log('Aprobada con millas');
                     element.state = 'Aprobada';
                 }
             }
-
-            // Si el pago es por otro método o no se especifica, se aprueba por defecto
+            // Método de pago inválido
             else {
-                element.state = 'Aprobada';
+                console.log('Rechazada por método de pago inválido');
+                element.state = 'Rechazada';
             }
 
             // Si la reserva es aprobada, actualizar las cuotas del destino
-            if (element.state == 'Aprobada') {
+            if (element.state === 'Aprobada') {
                 destination.quotas -= element.cant;
-                // Si no hay más cupos disponibles, desactivar el destino
-                if (destination.quotas == 0) {
+                if (destination.quotas === 0) {
                     destination.state = false;
                 }
             }
-
             break;
         }
         index++;
     }
 
-    // Guardar las reservas actualizadas en el localStorage
+    // Guardar las reservas y datos actualizados en el localStorage
     window.Sistema.pushItemToLocalStorage('reservations', reserv);
-    window.Sistema.reservations = reserv;
+    window.Sistema.pushItemToLocalStorage('usersDatabase', usersDatabase);
+    window.Sistema.pushItemToLocalStorage('destinos', dest);
+    window.Sistema.pushItemToLocalStorage('userLoggedIn', userLoggedIn);
+
     refreshReservations();
+
 }
+
 
 // Evento para escuchar los cambios en el storage
 window.addEventListener('storage', (event) => {

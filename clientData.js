@@ -25,3 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     informationContainer.classList.add("move-right");
     });
   });
+
+  window.addEventListener('storage', (event) => {
+  displayData()
+});

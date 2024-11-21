@@ -97,9 +97,11 @@ function register(){
   let inputSignUpLastName = qsValue("inputSignUpLastName");
   let inputSignUpUsername = qsValue("inputSignUpUsername");
   let inputSignUpPassword = qsValue("inputSignUpPassword");
-  let inputSignUpCreditCard = qsValue("inputSignUpCreditCard");
+  let inputSignUpCreditCard = qsValue("inputSignUpCreditCard").replaceAll('-', '');
   let inputSignUpCVC = qsValue("inputSignUpCVC");
   let errorContainerRegister = qs("errorContainerRegister")
+  
+  console.log(inputSignUpCreditCard)
   
   if ( window.Sistema.findUsername(inputSignUpUsername)  === false ) {
     errorContainerRegister.innerHTML = `<p>Nombre de usuario ya registrado</p>`
